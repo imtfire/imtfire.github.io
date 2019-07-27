@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>welcome to tfire&#39;s blog</title>
+  
+  <subtitle>let&#39;s travel with secure</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-07-27T17:16:00.830Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>tfire</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>my first blog</title>
+    <link href="http://yoursite.com/2019/07/28/my-first-blog/"/>
+    <id>http://yoursite.com/2019/07/28/my-first-blog/</id>
+    <published>2019-07-27T17:15:07.000Z</published>
+    <updated>2019-07-27T17:16:00.830Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="第一个博客"><a href="#第一个博客" class="headerlink" title="第一个博客"></a><center>第一个博客</center></h3><hr><h4 id="Typora快捷键"><a href="#Typora快捷键" class="headerlink" title="Typora快捷键"></a>Typora快捷键</h4><h5 id="选中"><a href="#选中" class="headerlink" title="选中"></a>选中</h5><p>选中一整行：ctrl+l<br>选中单词：ctrl+d<br>选中相同格式的文字：ctrl+e</p><h5 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h5><p>跳转到文章开头：ctrl+home<br>跳转到文章结尾：ctrl+end</p><h5 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h5><p>搜索：ctrl+f<br>替换：ctrl+h</p><h5 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h5><p>引用：输入&gt;之后输入空格<br>代码块：ctrl+alt+f；```+语言<br>标题：ctrl+数字<br>表格：ctrl+t<br>生成目录：[TOC]按回车<br>插入标注：输入[]，后面+任何<br>插入图片：直接拖动到指定位置即可或者ctrl+shift+i<br>插入链接：ctrl+k<br>插入表情：输入’:’之后输入英文单词<br>无序列表：输入-之后输入空格<br>有序列表：输入数字+“.”之后输入空格<br>todolist：-[空格]空格 文字</p><h5 id="显示格式"><a href="#显示格式" class="headerlink" title="显示格式"></a>显示格式</h5><p>加粗：ctrl+b<br>高亮：== 文字 ==<br>着重：ctrl+shift+反引号键（tab键上面那个键）<br>倾斜：ctrl+i<br>下划线：ctrl+u</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;第一个博客&quot;&gt;&lt;a href=&quot;#第一个博客&quot; class=&quot;headerlink&quot; title=&quot;第一个博客&quot;&gt;&lt;/a&gt;&lt;center&gt;第一个博客&lt;/center&gt;&lt;/h3&gt;&lt;hr&gt;
+&lt;h4 id=&quot;Typora快捷键&quot;&gt;&lt;a href=&quot;#Typora快捷键&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/07/28/hello-world/"/>
+    <id>http://yoursite.com/2019/07/28/hello-world/</id>
+    <published>2019-07-27T16:29:39.537Z</published>
+    <updated>2019-07-27T16:29:39.537Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
