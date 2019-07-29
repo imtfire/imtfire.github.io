@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Enthusiasm And Focus">
 <meta property="og:description" content="谈谈hdc与hwnd的区别 hWnd 与hDC的概念hWnd(Handle of Window，也可以这么说：h是类型描述，表示句柄；wnd是变量对象描述，表示窗口)是窗口句柄，其中包含窗口的属性。例如，窗口的大小、显示位置、父窗口。 hDC(Handle to Device Context)是图像的设备描述表，窗口显示上下文句柄，其中可以进行图形显示。 利用hDC=GetDC(hWnd)，可以获">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T03:29:38.591Z">
+<meta property="og:updated_time" content="2019-07-29T00:48:26.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows编程之句柄hwnd与hdc的区别">
 <meta name="twitter:description" content="谈谈hdc与hwnd的区别 hWnd 与hDC的概念hWnd(Handle of Window，也可以这么说：h是类型描述，表示句柄；wnd是变量对象描述，表示窗口)是窗口句柄，其中包含窗口的属性。例如，窗口的大小、显示位置、父窗口。 hDC(Handle to Device Context)是图像的设备描述表，窗口显示上下文句柄，其中可以进行图形显示。 利用hDC=GetDC(hWnd)，可以获">
@@ -358,7 +358,6 @@
 <hr>
 <h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>​    HWND hwnd;//窗口句柄<br>​    char szAppName[] = “window1”;</p>
 <p>//创建窗口<br>    hwnd = CreateWindow(szAppName, //窗口类型名<br>            TEXT(“The First Experiment”), //窗口实例的标题<br>            WS_OVERLAPPEDWINDOW, //窗口风格<br>            CW_USEDEFAULT, //窗口左上角位置坐标值x<br>            CW_USEDEFAULT, //窗口左上角位置坐标值y<br>            800, //窗口的宽度<br>            600, //窗口的高度<br>            NULL, //父窗口的句柄<br>            NULL, //主菜单的句柄<br>            hInstance, //应用程序实例句柄<br>            NULL );<br>　　　　//显示窗口<br>    ShowWindow(hwnd, iCmdShow);<br>    UpdateWindow(hwnd);</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－</p>
 <pre><code>static int nWidth, nHeight;
 HDC hdc;//定义设备环境句柄  
 HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标左键则用户区被刷成灰色<br>            nWidth = GetSystemMetrics(SM_CXFULLSCREEN);  //屏幕宽度<br>            nHeight = GetSystemMetrics(SM_CYFULLSCREEN); //屏幕高度<br>            hdc=GetDC(hwnd);<br>            hB = (HBRUSH)GetStockObject(GRAY_BRUSH);//灰色画刷<br>            SelectObject(hdc, hB);<br>            Rectangle(hdc, 0, 0, nWidth, nHeight);//将用户区重新刷成灰色<br>            DeleteObject(hB);//删除画刷</p>
@@ -402,6 +401,10 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/28/漫漫二进制/" rel="prev" title="漫漫二进制">
+                漫漫二进制 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -480,7 +483,7 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -493,7 +496,7 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

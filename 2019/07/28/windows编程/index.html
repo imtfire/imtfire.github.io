@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="windows编程随笔 从MessageBox开始int MessageBox( HWND hWnd**,** // handle of owner window LPCTSTR lpText**,** // address of text in message box LPCTSTR lpCaption**,** // address of title of message box UINT u">
+<meta name="description" content="windows编程随笔 1.从MessageBox开始123456int MessageBox(     HWND hWnd,    LPCTSTR lpText,     LPCTSTR lpCaption,    UINT wType     );  观察具体几个参数： hWnd： 为父窗口句柄，指定该对话框的所有者窗口。如果该参数为空(0/NULL)，则该对话框不属于任何窗口。 lpText">
 <meta name="keywords" content="windows">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows编程">
 <meta property="og:url" content="http://yoursite.com/2019/07/28/windows编程/index.html">
 <meta property="og:site_name" content="Enthusiasm And Focus">
-<meta property="og:description" content="windows编程随笔 从MessageBox开始int MessageBox( HWND hWnd**,** // handle of owner window LPCTSTR lpText**,** // address of text in message box LPCTSTR lpCaption**,** // address of title of message box UINT u">
+<meta property="og:description" content="windows编程随笔 1.从MessageBox开始123456int MessageBox(     HWND hWnd,    LPCTSTR lpText,     LPCTSTR lpCaption,    UINT wType     );  观察具体几个参数： hWnd： 为父窗口句柄，指定该对话框的所有者窗口。如果该参数为空(0/NULL)，则该对话框不属于任何窗口。 lpText">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T03:37:13.402Z">
+<meta property="og:updated_time" content="2019-07-29T03:26:27.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows编程">
-<meta name="twitter:description" content="windows编程随笔 从MessageBox开始int MessageBox( HWND hWnd**,** // handle of owner window LPCTSTR lpText**,** // address of text in message box LPCTSTR lpCaption**,** // address of title of message box UINT u">
+<meta name="twitter:description" content="windows编程随笔 1.从MessageBox开始123456int MessageBox(     HWND hWnd,    LPCTSTR lpText,     LPCTSTR lpCaption,    UINT wType     );  观察具体几个参数： hWnd： 为父窗口句柄，指定该对话框的所有者窗口。如果该参数为空(0/NULL)，则该对话框不属于任何窗口。 lpText">
 
 
 
@@ -346,19 +346,11 @@
 
       
         <h3 id="windows编程随笔"><a href="#windows编程随笔" class="headerlink" title="windows编程随笔"></a><center>windows编程随笔</center></h3><hr>
-<h4 id="从MessageBox开始"><a href="#从MessageBox开始" class="headerlink" title="从MessageBox开始"></a>从MessageBox开始</h4><p>int MessageBox(</p>
-<p><strong>HWND</strong> <em>hWnd**</em>,**</p>
-<p>// handle of owner window</p>
-<p><strong>LPCTSTR</strong> <em>lpText**</em>,**</p>
-<p>// address of text in message box</p>
-<p><strong>LPCTSTR</strong> <em>lpCaption**</em>,**</p>
-<p>// address of title of message box</p>
-<p><strong>UINT</strong> <em>uType</em></p>
-<p>// style of message box</p>
-<p><strong>);</strong></p>
+<h4 id="1-从MessageBox开始"><a href="#1-从MessageBox开始" class="headerlink" title="1.从MessageBox开始"></a>1.从MessageBox开始</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MessageBox</span><span class="params">( </span></span></span><br><span class="line"><span class="function"><span class="params">    HWND hWnd,</span></span></span><br><span class="line"><span class="function"><span class="params">    LPCTSTR lpText, </span></span></span><br><span class="line"><span class="function"><span class="params">    LPCTSTR lpCaption,</span></span></span><br><span class="line"><span class="function"><span class="params">    UINT wType </span></span></span><br><span class="line"><span class="function"><span class="params">    )</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>观察具体几个参数：</p>
 <p><strong>hWnd</strong>：</p>
-<p>为父窗口<u>句柄</u>，设置为NULL，表示使用Windows 桌面作为其父窗口如果该参数为空(0)，则该对话框不属于任何窗口（？）。</p>
+<p>为父窗口<u>句柄</u>，指定该对话框的所有者窗口。如果该参数为空(0/NULL)，则该对话框不属于任何窗口。</p>
 <p><strong>lpText</strong>:</p>
 <p>显示在对话框中的消息。</p>
 <p><strong>lpCaption</strong>：</p>
@@ -366,9 +358,101 @@
 <p><strong>wType</strong>：</p>
 <p>指定显示按钮的数目及形式</p>
 <hr>
-<h4 id="那么问题出现了，句柄代表的到底是什么"><a href="#那么问题出现了，句柄代表的到底是什么" class="headerlink" title="那么问题出现了，句柄代表的到底是什么"></a>那么问题出现了，句柄代表的到底是什么</h4><p><em>简单的来说，句柄就是类似指针的标识</em></p>
+<ul>
+<li><h4 id="那么问题出现了，句柄代表的到底是什么"><a href="#那么问题出现了，句柄代表的到底是什么" class="headerlink" title="那么问题出现了，句柄代表的到底是什么"></a>那么问题出现了，句柄代表的到底是什么</h4></li>
+</ul>
+<p><em>简单的来说，句柄就是类似指针的标识</em></p>
 <p>1.windows 之所以要设立句柄，根本上源于<a href="http://baike.baidu.com/view/1082.htm" target="_blank" rel="noopener">内存</a>管理机制的问题—<a href="http://baike.baidu.com/view/1499823.htm" target="_blank" rel="noopener">虚拟地址</a>，简而言之数据的地址需要变动，变动以后就需要有人来记录管理变动，（就好像户籍管理一样），因此系统用句柄来记载数据地址的变更。</p>
 <p>2.更透彻一点地认识句柄，句柄是一种指向<a href="http://baike.baidu.com/view/159417.htm" target="_blank" rel="noopener">指针</a>的<a href="http://baike.baidu.com/view/159417.htm" target="_blank" rel="noopener">指针</a>但是它的属性是只读的。</p>
+<hr>
+<ul>
+<li><h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4></li>
+</ul>
+<p>那么一个完整的MessageBox便展现出来了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> WINAPI <span class="title">WinMain</span><span class="params">(HINSTANCE hinstance, HINSTANCE hprevinstance, PSTR szCmdLine, <span class="keyword">int</span> iCmdShow)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MessageBox(<span class="literal">NULL</span>, </span><br><span class="line">     		   TEXT(<span class="string">"this is content !"</span>),</span><br><span class="line">               TEXT(<span class="string">"this is title !"</span>),</span><br><span class="line">               MB_OK);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*WinMain()函数的原型声明</span></span><br><span class="line"><span class="comment">int WINAPI WinMain(</span></span><br><span class="line"><span class="comment">  HINSTANCE hInstance,//当前运行实例句柄</span></span><br><span class="line"><span class="comment">  HINSTANCE hPrevInstance,//前一个实例句柄</span></span><br><span class="line"><span class="comment">  LPSTR lpCmdLine,//指定命令参数行字符串</span></span><br><span class="line"><span class="comment">  int nCmdShow;//指定窗口的显示状态</span></span><br><span class="line"><span class="comment">)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">MessageBox函数声明</span></span><br><span class="line"><span class="comment">int MessageBox(</span></span><br><span class="line"><span class="comment">   HWND hWnd,//所属窗口的句柄</span></span><br><span class="line"><span class="comment">   LPCTSTR lpText,//消息字符串</span></span><br><span class="line"><span class="comment">   LPCTSTR lpCaption,//消息框标题字符串</span></span><br><span class="line"><span class="comment">   UNIT uType//消息框的类型</span></span><br><span class="line"><span class="comment">);*/</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li><h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4></li>
+</ul>
+<p>在<code>MB_OK</code>处转到定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MB_OK                       0x00000000L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MB_OKCANCEL                 0x00000001L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MB_ABORTRETRYIGNORE         0x00000002L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MB_YESNOCANCEL              0x00000003L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MB_YESNO                    0x00000004L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MB_RETRYCANCEL              0x00000005L</span></span><br></pre></td></tr></table></figure>
+
+<p>对应关系 ：MB_OK 对应十六进制的0？</p>
+<p>用 1 来替换 MB_OK 一样可以得到结果吗？</p>
+<p>bingo！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MessageBox(<span class="literal">NULL</span>, </span><br><span class="line">     		   TEXT(<span class="string">"this is content !"</span>),</span><br><span class="line">               TEXT(<span class="string">"this is title !"</span>),</span><br><span class="line">               <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>编译通过！</p>
+<hr>
+<h4 id="2-匈牙利命名法"><a href="#2-匈牙利命名法" class="headerlink" title="2.匈牙利命名法"></a>2.匈牙利命名法</h4><p>对于上面MessageBox函数中奇奇怪怪的参数，它们使用了匈牙利命名法。</p>
+<p>  这种标记法非常简单，即变量名以一个或者多个小写字母开始，这些字母表示变量的数据型态。例如：szCmdLine 中的 sz 代表“以0结尾的字符串（StringZero）”；在 hInstance 和 hPrevInstance 中的 h 前缀表示“句柄（Handle）”；在 iCmdShow 中的 i 前缀表示“整型（Integer）”。</p>
+<p>当命名结构变量时，可以用结构名（或者结构名的一种缩写）的小写形式作为变量名称的前缀，或者用作整个变量名。例如：msg 变量是 MSG 型态的结构；wndclass 是 WNDCLASSEX 型态的一个结构；ps 是一个 PAINTSTRUCT 结构，rect 是一个 RECT 结构。</p>
+<p>匈牙利表示法能够帮助程序写作者及早发现并避免程序中的错误。由于变量名既描述了变量的作用，又描述了其数据型态，就比较容易避免产生数据型态不合的错误。</p>
+<table>
+<thead>
+<tr>
+<th><strong>前缀</strong></th>
+<th><strong>数据类型</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>int（整型）</td>
+</tr>
+<tr>
+<td>c</td>
+<td>char 或 WCHAR 或 TCHAR</td>
+</tr>
+<tr>
+<td>by</td>
+<td>BYTE （无符号字符）</td>
+</tr>
+<tr>
+<td>x, y</td>
+<td>int，表示 x 坐标和 y 坐标</td>
+</tr>
+<tr>
+<td>l</td>
+<td>LONG（长整型）</td>
+</tr>
+<tr>
+<td>B 或 f</td>
+<td>BOOL（int）；f 表示“flag”</td>
+</tr>
+<tr>
+<td>w</td>
+<td>WORD（无符号短整型）</td>
+</tr>
+<tr>
+<td>dw</td>
+<td>DWORD（无符号长整型）</td>
+</tr>
+<tr>
+<td>fn</td>
+<td>函数</td>
+</tr>
+<tr>
+<td>s</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>sz</td>
+<td>以零结束的字符串</td>
+</tr>
+<tr>
+<td>h</td>
+<td>句柄</td>
+</tr>
+<tr>
+<td>p</td>
+<td>指针</td>
+</tr>
+<tr>
+<td>cx, cy</td>
+<td>int，表示 x 或 y 的长度，c 表示“count”（计数）</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -490,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -503,7 +587,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -543,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows编程随笔"><span class="nav-number">1.</span> <span class="nav-text">windows编程随笔</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从MessageBox开始"><span class="nav-number">1.1.</span> <span class="nav-text">从MessageBox开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#那么问题出现了，句柄代表的到底是什么"><span class="nav-number">1.2.</span> <span class="nav-text">那么问题出现了，句柄代表的到底是什么</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows编程随笔"><span class="nav-number">1.</span> <span class="nav-text">windows编程随笔</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-从MessageBox开始"><span class="nav-number">1.1.</span> <span class="nav-text">1.从MessageBox开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#那么问题出现了，句柄代表的到底是什么"><span class="nav-number">1.2.</span> <span class="nav-text">那么问题出现了，句柄代表的到底是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考"><span class="nav-number">1.4.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-匈牙利命名法"><span class="nav-number">1.5.</span> <span class="nav-text">2.匈牙利命名法</span></a></li></ol></li></ol></div>
             
 
           </div>

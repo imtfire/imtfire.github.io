@@ -278,6 +278,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/漫漫二进制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tfire">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Enthusiasm And Focus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/28/漫漫二进制/" itemprop="url">漫漫二进制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-28T19:39:00+08:00">
+                2019-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/28/漫漫二进制/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/windows编程之句柄hwnd与hdc的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,26 +475,18 @@
       
         
           
-            <h3 id="谈谈hdc与hwnd的区别"><a href="#谈谈hdc与hwnd的区别" class="headerlink" title="谈谈hdc与hwnd的区别"></a><center>谈谈hdc与hwnd的区别</center></h3><hr>
-<h4 id="hWnd-与hDC的概念"><a href="#hWnd-与hDC的概念" class="headerlink" title="hWnd 与hDC的概念"></a>hWnd 与hDC的概念</h4><p><strong>hWnd</strong>(Handle of Window，也可以这么说：h是类型描述，表示句柄；wnd是变量对象描述，表示窗口)是窗口句柄，其中包含窗口的属性。例如，窗口的大小、显示位置、父窗口。</p>
-<p><strong>hDC</strong>(Handle to Device Context)是图像的设备描述表，窗口显示上下文句柄，其中可以进行图形显示。</p>
-<p>利用hDC=GetDC(hWnd)，可以获得一个窗口的图形设备描述表。可以通过ReleaseDC()函数释放。</p>
-<p>hWnd句柄是描述一个窗口的形状、位置、大小、是否显示、它的父窗口、兄弟窗口、等等的一组数据结构；<br>hDC句柄是一个实实在在的用于具体表现这个窗口时，需要对这个窗口有个场合来实现的地方。</p>
-<p>hWnd是窗体句柄；hDC是设备场景句柄。<br>hWnd与窗口管理有关；hDC与绘图API（GDI函数）有关。<br>hWnd是windows给窗口发送消息（事件）用的；hDC是把窗口绘制在屏幕上用的。</p>
-<p>有了hWnd，可以使用API的GetDC()函数得到与其相关的hDC：hDC=GetDC(hWnd)。</p>
-<p>hWnd与hDC都是句柄，但是<strong>hWnd是窗口句柄而hDC是设备描述表的句柄</strong>。</p>
-<p>在Windows标编程设计中，使用了大量的句柄来标识对象。一个句柄是指使用的一个唯一的整数值，即一个4字节（64位程序中为8字节）长的数值，来标识应用程序中的不同对象和同类中的不同的实例，例如：一个窗口、按钮、图标、滚动条、输出设备、孔健、文件等。应用程序能通过句柄来访问相应的对象的信息。但是<strong>句柄不是指针，程序不能利用句柄来直接阅读文件中的信息。如果句柄不在I/O文件中，它是毫无用处的。</strong>我们来看看另一个好理解的说法：在进程的地址空间中设一张表，表里头专门保存一些编号和由这个编号对应一个地址，而由那个地址去引用实际的对象，这个编号跟那个地址在数值上没有任何规律性的联系，纯粹是个映射而已。在Windows系统中，这个编号就叫做”句柄”。</p>
-<p>句柄实际上是一种指向某种资源的指针，但与指针又有所不同：HWND是跨进程可见的，而指针从来都是属于某个特定进程的。指针对应着一个数据在内存中的地址，得到了指针就可以自由地修改该数据。Windows并不希望一般程序修改其内部数据结构，因为这样太不安全。所以Windows给每个使用GlobalAlloc等函数声明的内存区域指定一个句柄(本质上仍是一个指针，但不要直接操作它)，平时我们只是在调用API函数时利用这个句柄来说明要操作哪段内存。</p>
-<hr>
-<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>​    HWND hwnd;//窗口句柄<br>​    char szAppName[] = “window1”;</p>
-<p>//创建窗口<br>    hwnd = CreateWindow(szAppName, //窗口类型名<br>            TEXT(“The First Experiment”), //窗口实例的标题<br>            WS_OVERLAPPEDWINDOW, //窗口风格<br>            CW_USEDEFAULT, //窗口左上角位置坐标值x<br>            CW_USEDEFAULT, //窗口左上角位置坐标值y<br>            800, //窗口的宽度<br>            600, //窗口的高度<br>            NULL, //父窗口的句柄<br>            NULL, //主菜单的句柄<br>            hInstance, //应用程序实例句柄<br>            NULL );<br>　　　　//显示窗口<br>    ShowWindow(hwnd, iCmdShow);<br>    UpdateWindow(hwnd);</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－</p>
-<pre><code>static int nWidth, nHeight;
-HDC hdc;//定义设备环境句柄  
-HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标左键则用户区被刷成灰色<br>            nWidth = GetSystemMetrics(SM_CXFULLSCREEN);  //屏幕宽度<br>            nHeight = GetSystemMetrics(SM_CYFULLSCREEN); //屏幕高度<br>            hdc=GetDC(hwnd);<br>            hB = (HBRUSH)GetStockObject(GRAY_BRUSH);//灰色画刷<br>            SelectObject(hdc, hB);<br>            Rectangle(hdc, 0, 0, nWidth, nHeight);//将用户区重新刷成灰色<br>            DeleteObject(hB);//删除画刷</p>
-<p>​            return 0;</p>
-
-          
+          谈谈hdc与hwnd的区别
+hWnd 与hDC的概念hWnd(Handle of Window，也可以这么说：h是类型描述，表示句柄；wnd是变量对象描述，表示窗口)是窗口句柄，其中包含窗口的属性。例如，窗口的大小、显示位置、父窗口。
+hDC(Handle to Device Context)是图像的设备描述表，窗口显示上下文句柄，其中可以进行图形显示。
+利用hDC=GetDC(hWnd)，可以获
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/28/windows编程之句柄hwnd与hdc的区别/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -486,33 +604,18 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
       
         
           
-            <h3 id="深入了解Windows句柄是什么"><a href="#深入了解Windows句柄是什么" class="headerlink" title="深入了解Windows句柄是什么"></a><center>深入了解Windows句柄是什么</center></h3><hr>
-<p>Windows是一个以虚拟内存为基础的操作系统，很多时候，进程的代码和数据并不全部装入内存，进程的某一段装入内存后，还可能被换出到外存，当再次需要时，再装入内存。两次装入的地址绝大多数情况下是不一样的。也就是说，同一对象在内存中的地址会变化。那么，程序怎么才能准确地访问到对象呢？为了解决这个问题，Windows引入了句柄。</p>
-<hr>
-<h4 id="1-虚拟内存结构"><a href="#1-虚拟内存结构" class="headerlink" title="1.虚拟内存结构"></a>1.虚拟内存结构</h4><p>CPU通过寻址来访问内存，32位CPU的寻址宽度度是 0~0xFFFFFFFF ，计算后得到的大小是4G，也就是说可支持的物理内存最大是4G。但在实践过程中，碰到了这样的问题，程序需要使用4G内存，而可用物理内存小于4G，导致程序不得不降低内存占用，这个时候操作系统就会借助磁盘空间来做虚拟的内存空间，把<strong>当前进程不需要的数据放在磁盘上，等到用到的时候，在利用调度算法把所需要的数据从磁盘空间上调度到内存</strong>，虚拟内存就是为了扩大内存的容量，每当我们要运行一个程序的时候经过编译以后形成的仅仅是逻辑上的空间，根本不是可以直接运行的内存空间，所以它还存在一个地址映射的概念。</p>
-<p>为了解决这一问题，CPU引入<strong><em>MMU</em></strong>（内存管理单元）</p>
-<p>MMU的核心思想是利用虚拟地址替代物理地址。CPU寻址时使用虚拟地址，MMU将虚拟地址映射为物理地址，他的引入解决了对物理内存的限制。</p>
-<p>既然有了内存管理单元，就得有内存管理机制——内存分页（Paging）</p>
-<p>它将虚拟地址和物理地址按照固定大小（4K）分割成页(page)和页帧(page frame)，并保证页与页帧的大小相同，所以页的个数必定多于页帧的个数。</p>
-<p>在计算机上有一个页表（page table），就是映射虚拟内存页到物理内存页的，更确切的说是页号到页帧号的映射，而且是一对一的映射。但是问题来了，虚拟内存页的个数 &gt; 物理内存页帧的个数，岂不是有些虚拟内存页的地址永远没有对应的物理内存地址空间？不是的，操作系统是这样处理的。操作系统有个页面失效（page fault）功能。操作系统找到一个最少使用的页帧，让他失效，并把它写入磁盘，随后把需要访问的页放到页帧中，并修改页表中的映射，这样就保证所有的页都有被调度的可能了。</p>
-<p><strong>虚拟内存地址由页号（对应映射到一个页帧）和偏移量组成</strong></p>
-<p>偏移量：就是页（或者页帧）的大小，即这个页（或者页帧）到底能存多少数据。举个例子，有一个虚拟地址它的页号是4，偏移量是20，那么他的寻址过程是这样的：首先到页表中找到页号4对应的页帧号（比如为8），如果页不在内存中，则用失效机制调入页，否则把页帧号和偏移量传给MMU（CPU的内存管理单元）组成一个物理上真正存在的地址，接着就是访问物理内存中的数据了。总结起来说，虚拟内存地址的大小是与地址总线位数相关，物理内存地址的大小跟物理内存条的容量相关。</p>
-<p>![](E:\my blog\source_posts\windows编程之句柄hwnd详解\custom.jpg)</p>
-<p>进一步优化，引入TLB（Translation lookaside buffer，页表寄存器缓冲）<br>由上一节可知，页表是被存储在内存中的。我们知道CPU通过总线访问内存，肯定慢于直接访问寄存器的。<br>为了进一步优化性能，现代CPU架构引入了<a href="http://baike.baidu.com/view/129737.html?fromTaglist" target="_blank" rel="noopener">TLB</a>，用来缓存一部分经常访问的页表内容。</p>
-<hr>
-<h4 id="2-什么是句柄"><a href="#2-什么是句柄" class="headerlink" title="2.什么是句柄"></a>2.什么是句柄</h4><p>系统为每个进程在内存中分配一定的区域，用来存放各个句柄，即一个个32位无符号整型值（32位操作系统中）。每个32位无符号整型值相当于一个指针，指向内存中的另一个区域（我们不妨称之为区域A）。而区域A中存放的正是对象在内存中的地址。当对象在内存中的位置发生变化时，区域A的值被更新，变为当前时刻对象在内存中的地址，而在这个过程中，区域A的位置以及对应句柄的值是不发生变化的。这种机制，用一种形象的说法可以表述为：有一个固定的地址（句柄），指向一个固定的位置（区域A），而区域A中的值可以动态地变化，它时刻记录着当前时刻对象在内存中的地址。这样，无论对象的位置在内存中如何变化，只要我们掌握了句柄的值，就可以找到区域A，进而找到该对象。而句柄的值在程序本次运行期间是绝对不变的，我们（即系统）当然可以掌握它。这就是以不变应万变，按图索骥，顺藤摸瓜。</p>
-<p>那么这里我们就要修正一下前面的说法了：通用句柄HANDLE有时候是逻辑指针，大多数时候是结构体指针，特殊句柄如HMENU等是结构体指针。这样第二个问题也解决了。</p>
-<p>![](E:\my blog\source_posts\windows编程之句柄hwnd详解\20131230103702500.png)</p>
-<hr>
-<h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a><strong>3.总结</strong></h4><p> 所以，我们可以这样理解Windows句柄：</p>
-<pre><code>数值上，是一个32位无符号整型值（32位系统下）；逻辑上，相当于指针的指针；形象理解上，是Windows中各个对象的一个唯一的、固定不变的ID；作用上，Windows使用句柄来标识诸如窗口、位图、画笔等对象，并通过句柄找到这些对象。</code></pre><p>下面，关于句柄，再交代一些关键性细节：</p>
-<p>1.所谓“唯一”、“不变”是指在程序的<strong>一次运行</strong>中。如果本次运行完，关闭程序，再次启动程序运行，那么这次运行中，同一对象的句柄的值和上次运行时比较，一般是不一样的。</p>
-<p>  其实这理解起来也很自然，所谓“一把归一把，这把是这把，那把是那把，两者不相干”（“把”是形象的说法，就像打牌一样，这里指程序的一次运行）。</p>
-<p>2.句柄是对象生成时系统指定的，<strong>属性是只读的，程序员不能修改句柄</strong>。</p>
-<p>3.不同的系统中，句柄的大小（字节数）是不同的，可以使用sizeof()来计算句柄的大小。</p>
-<p>4.通过句柄，程序员只能调用系统提供的服务（即API调用），<strong>不能像使用指针那样，做其它的事。</strong></p>
+          深入了解Windows句柄是什么
+Windows是一个以虚拟内存为基础的操作系统，很多时候，进程的代码和数据并不全部装入内存，进程的某一段装入内存后，还可能被换出到外存，当再次需要时，再装入内存。两次装入的地址绝大多数情况下是不一样的。也就是说，同一对象在内存中的地址会变化。那么，程序怎么才能准确地访问到对象呢？为了解决这个问题，Windows引入了句柄。
 
-          
+1.虚拟内存结构CPU通过寻址来访问内
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/28/windows编程之句柄hwnd详解/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -630,32 +733,21 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
       
         
           
-            <h3 id="windows编程随笔"><a href="#windows编程随笔" class="headerlink" title="windows编程随笔"></a><center>windows编程随笔</center></h3><hr>
-<h4 id="从MessageBox开始"><a href="#从MessageBox开始" class="headerlink" title="从MessageBox开始"></a>从MessageBox开始</h4><p>int MessageBox(</p>
-<p><strong>HWND</strong> <em>hWnd**</em>,**</p>
-<p>// handle of owner window</p>
-<p><strong>LPCTSTR</strong> <em>lpText**</em>,**</p>
-<p>// address of text in message box</p>
-<p><strong>LPCTSTR</strong> <em>lpCaption**</em>,**</p>
-<p>// address of title of message box</p>
-<p><strong>UINT</strong> <em>uType</em></p>
-<p>// style of message box</p>
-<p><strong>);</strong></p>
-<p>观察具体几个参数：</p>
-<p><strong>hWnd</strong>：</p>
-<p>为父窗口<u>句柄</u>，设置为NULL，表示使用Windows 桌面作为其父窗口如果该参数为空(0)，则该对话框不属于任何窗口（？）。</p>
-<p><strong>lpText</strong>:</p>
-<p>显示在对话框中的消息。</p>
-<p><strong>lpCaption</strong>：</p>
-<p>在对话框<a href="https://baike.baidu.com/item/标题栏" target="_blank" rel="noopener">标题栏</a>中显示的字符串<a href="https://baike.baidu.com/item/表达式" target="_blank" rel="noopener">表达式</a>。如果该参数为空（vbNullString），则使用默认的“错误”作为对话框的标题。</p>
-<p><strong>wType</strong>：</p>
-<p>指定显示按钮的数目及形式</p>
-<hr>
-<h4 id="那么问题出现了，句柄代表的到底是什么"><a href="#那么问题出现了，句柄代表的到底是什么" class="headerlink" title="那么问题出现了，句柄代表的到底是什么"></a>那么问题出现了，句柄代表的到底是什么</h4><p><em>简单的来说，句柄就是类似指针的标识</em></p>
-<p>1.windows 之所以要设立句柄，根本上源于<a href="http://baike.baidu.com/view/1082.htm" target="_blank" rel="noopener">内存</a>管理机制的问题—<a href="http://baike.baidu.com/view/1499823.htm" target="_blank" rel="noopener">虚拟地址</a>，简而言之数据的地址需要变动，变动以后就需要有人来记录管理变动，（就好像户籍管理一样），因此系统用句柄来记载数据地址的变更。</p>
-<p>2.更透彻一点地认识句柄，句柄是一种指向<a href="http://baike.baidu.com/view/159417.htm" target="_blank" rel="noopener">指针</a>的<a href="http://baike.baidu.com/view/159417.htm" target="_blank" rel="noopener">指针</a>但是它的属性是只读的。</p>
+          windows编程随笔
+1.从MessageBox开始123456int MessageBox(     HWND hWnd,    LPCTSTR lpText,     LPCTSTR lpCaption,    UINT wType     );
 
-          
+观察具体几个参数：
+hWnd：
+为父窗口句柄，指定该对话框的所有者窗口。如果该参数为空(0/NULL)，则该对话框不属于任何窗口。
+lpText
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/28/windows编程/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -773,14 +865,33 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
       
         
           
-            <h3 id="第一个博客"><a href="#第一个博客" class="headerlink" title="第一个博客"></a><center>第一个博客</center></h3><hr>
-<h4 id="Typora快捷键"><a href="#Typora快捷键" class="headerlink" title="Typora快捷键"></a>Typora快捷键</h4><h5 id="选中"><a href="#选中" class="headerlink" title="选中"></a>选中</h5><p>选中一整行：ctrl+l<br>选中单词：ctrl+d<br>选中相同格式的文字：ctrl+e</p>
-<h5 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h5><p>跳转到文章开头：ctrl+home<br>跳转到文章结尾：ctrl+end</p>
-<h5 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h5><p>搜索：ctrl+f<br>替换：ctrl+h</p>
-<h5 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h5><p>引用：输入&gt;之后输入空格<br>代码块：ctrl+alt+f；```+语言<br>标题：ctrl+数字<br>表格：ctrl+t<br>生成目录：[TOC]按回车<br>插入标注：输入[]，后面+任何<br>插入图片：直接拖动到指定位置即可或者ctrl+shift+i<br>插入链接：ctrl+k<br>插入表情：输入’:’之后输入英文单词<br>无序列表：输入-之后输入空格<br>有序列表：输入数字+“.”之后输入空格<br>todolist：-[空格]空格 文字</p>
-<h5 id="显示格式"><a href="#显示格式" class="headerlink" title="显示格式"></a>显示格式</h5><p>加粗：ctrl+b<br>高亮：== 文字 ==<br>着重：ctrl+shift+反引号键（tab键上面那个键）<br>倾斜：ctrl+i<br>下划线：ctrl+u</p>
+          第一个博客
+第一个博客，简单记录一下markdown的快捷键吧
 
-          
+Typora快捷键
+选中
+
+选中一整行：ctrl+l选中单词：ctrl+d选中相同格式的文字：ctrl+e
+
+跳转
+
+跳转到文章开头：ctrl+home跳转到文章结尾：ctrl+end
+
+搜索
+
+搜索：ctrl+f替换：ctrl+h
+
+输入格式
+
+引用：输入&gt;之后输入空格代码块：ctrl+alt+f；```+语言标题：ctrl
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/28/my-first-blog/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -898,21 +1009,16 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/28/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -994,7 +1100,7 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1007,7 +1113,7 @@ HBRUSH hB;//定义画笔句刷</code></pre><p>case WM_LBUTTONDOWN://按下鼠标
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
