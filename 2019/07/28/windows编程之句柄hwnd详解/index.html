@@ -89,10 +89,13 @@
 <meta property="og:site_name" content="Enthusiasm And Focus">
 <meta property="og:description" content="深入了解Windows句柄是什么 Windows是一个以虚拟内存为基础的操作系统，很多时候，进程的代码和数据并不全部装入内存，进程的某一段装入内存后，还可能被换出到外存，当再次需要时，再装入内存。两次装入的地址绝大多数情况下是不一样的。也就是说，同一对象在内存中的地址会变化。那么，程序怎么才能准确地访问到对象呢？为了解决这个问题，Windows引入了句柄。  1.虚拟内存结构CPU通过寻址来访问内">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T03:36:42.406Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/windows编程之句柄hwnd详解/custom.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/windows编程之句柄hwnd详解/20131230103702500.png">
+<meta property="og:updated_time" content="2019-07-29T16:21:57.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows编程之句柄hwnd详解">
 <meta name="twitter:description" content="深入了解Windows句柄是什么 Windows是一个以虚拟内存为基础的操作系统，很多时候，进程的代码和数据并不全部装入内存，进程的某一段装入内存后，还可能被换出到外存，当再次需要时，再装入内存。两次装入的地址绝大多数情况下是不一样的。也就是说，同一对象在内存中的地址会变化。那么，程序怎么才能准确地访问到对象呢？为了解决这个问题，Windows引入了句柄。  1.虚拟内存结构CPU通过寻址来访问内">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/28/windows编程之句柄hwnd详解/custom.jpg">
 
 
 
@@ -356,12 +359,12 @@
 <p>在计算机上有一个页表（page table），就是映射虚拟内存页到物理内存页的，更确切的说是页号到页帧号的映射，而且是一对一的映射。但是问题来了，虚拟内存页的个数 &gt; 物理内存页帧的个数，岂不是有些虚拟内存页的地址永远没有对应的物理内存地址空间？不是的，操作系统是这样处理的。操作系统有个页面失效（page fault）功能。操作系统找到一个最少使用的页帧，让他失效，并把它写入磁盘，随后把需要访问的页放到页帧中，并修改页表中的映射，这样就保证所有的页都有被调度的可能了。</p>
 <p><strong>虚拟内存地址由页号（对应映射到一个页帧）和偏移量组成</strong></p>
 <p>偏移量：就是页（或者页帧）的大小，即这个页（或者页帧）到底能存多少数据。举个例子，有一个虚拟地址它的页号是4，偏移量是20，那么他的寻址过程是这样的：首先到页表中找到页号4对应的页帧号（比如为8），如果页不在内存中，则用失效机制调入页，否则把页帧号和偏移量传给MMU（CPU的内存管理单元）组成一个物理上真正存在的地址，接着就是访问物理内存中的数据了。总结起来说，虚拟内存地址的大小是与地址总线位数相关，物理内存地址的大小跟物理内存条的容量相关。</p>
-<p>![](E:\my blog\source_posts\windows编程之句柄hwnd详解\custom.jpg)</p>
+<p><img src="/2019/07/28/windows编程之句柄hwnd详解/custom.jpg" alt></p>
 <p>进一步优化，引入TLB（Translation lookaside buffer，页表寄存器缓冲）<br>由上一节可知，页表是被存储在内存中的。我们知道CPU通过总线访问内存，肯定慢于直接访问寄存器的。<br>为了进一步优化性能，现代CPU架构引入了<a href="http://baike.baidu.com/view/129737.html?fromTaglist" target="_blank" rel="noopener">TLB</a>，用来缓存一部分经常访问的页表内容。</p>
 <hr>
 <h4 id="2-什么是句柄"><a href="#2-什么是句柄" class="headerlink" title="2.什么是句柄"></a>2.什么是句柄</h4><p>系统为每个进程在内存中分配一定的区域，用来存放各个句柄，即一个个32位无符号整型值（32位操作系统中）。每个32位无符号整型值相当于一个指针，指向内存中的另一个区域（我们不妨称之为区域A）。而区域A中存放的正是对象在内存中的地址。当对象在内存中的位置发生变化时，区域A的值被更新，变为当前时刻对象在内存中的地址，而在这个过程中，区域A的位置以及对应句柄的值是不发生变化的。这种机制，用一种形象的说法可以表述为：有一个固定的地址（句柄），指向一个固定的位置（区域A），而区域A中的值可以动态地变化，它时刻记录着当前时刻对象在内存中的地址。这样，无论对象的位置在内存中如何变化，只要我们掌握了句柄的值，就可以找到区域A，进而找到该对象。而句柄的值在程序本次运行期间是绝对不变的，我们（即系统）当然可以掌握它。这就是以不变应万变，按图索骥，顺藤摸瓜。</p>
 <p>那么这里我们就要修正一下前面的说法了：通用句柄HANDLE有时候是逻辑指针，大多数时候是结构体指针，特殊句柄如HMENU等是结构体指针。这样第二个问题也解决了。</p>
-<p>![](E:\my blog\source_posts\windows编程之句柄hwnd详解\20131230103702500.png)</p>
+<p><img src="/2019/07/28/windows编程之句柄hwnd详解/20131230103702500.png" alt></p>
 <hr>
 <h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a><strong>3.总结</strong></h4><p> 所以，我们可以这样理解Windows句柄：</p>
 <pre><code>数值上，是一个32位无符号整型值（32位系统下）；逻辑上，相当于指针的指针；形象理解上，是Windows中各个对象的一个唯一的、固定不变的ID；作用上，Windows使用句柄来标识诸如窗口、位图、画笔等对象，并通过句柄找到这些对象。</code></pre><p>下面，关于句柄，再交代一些关键性细节：</p>
