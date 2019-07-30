@@ -89,14 +89,14 @@
 <meta property="og:site_name" content="Enthusiasm And Focus">
 <meta property="og:description" content="经典栈溢出问题 ​    说到二进制安全，肯定避不开栈溢出，今天就拿栈溢出作为开始，讨论一下它的形成与构造。 1. 程序的内存空间​    首先，先介绍一下应用程序内存空间布局，用一张图来说明，简单粗暴。  简单介绍一下就是，每个应用程序都有4个GB的虚拟空间（在windows编程的虚拟内存中介绍了），高1个GB作为内核空间，用户代码无权访问，所有的应用程序共享这部分空间。而低3个GB的空间是用户">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/%E5%9B%BE%E7%89%871.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/%E5%9B%BE%E7%89%872.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/%E5%9B%BE%E7%89%873.png">
-<meta property="og:updated_time" content="2019-07-30T16:11:57.765Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/3.1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/3.2.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/3.3.png">
+<meta property="og:updated_time" content="2019-07-30T16:39:43.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="经典栈溢出问题">
 <meta name="twitter:description" content="经典栈溢出问题 ​    说到二进制安全，肯定避不开栈溢出，今天就拿栈溢出作为开始，讨论一下它的形成与构造。 1. 程序的内存空间​    首先，先介绍一下应用程序内存空间布局，用一张图来说明，简单粗暴。  简单介绍一下就是，每个应用程序都有4个GB的虚拟空间（在windows编程的虚拟内存中介绍了），高1个GB作为内核空间，用户代码无权访问，所有的应用程序共享这部分空间。而低3个GB的空间是用户">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/%E5%9B%BE%E7%89%871.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/30/经典栈溢出问题/3.1.png">
 
 
 
@@ -352,7 +352,7 @@
         <h3 id="经典栈溢出问题"><a href="#经典栈溢出问题" class="headerlink" title="经典栈溢出问题"></a><center>经典栈溢出问题</center></h3><hr>
 <p>​    说到二进制安全，肯定避不开栈溢出，今天就拿栈溢出作为开始，讨论一下它的形成与构造。</p>
 <h4 id="1-程序的内存空间"><a href="#1-程序的内存空间" class="headerlink" title="1. 程序的内存空间"></a>1. 程序的内存空间</h4><p>​    首先，先介绍一下应用程序内存空间布局，用一张图来说明，简单粗暴。</p>
-<p><img src="/2019/07/30/经典栈溢出问题/%E5%9B%BE%E7%89%871.png" alt></p>
+<p><img src="/2019/07/30/经典栈溢出问题/3.1.png" alt></p>
 <p>简单介绍一下就是，每个应用程序都有4个GB的虚拟空间（在windows编程的虚拟内存中介绍了），高1个GB作为内核空间，用户代码无权访问，所有的应用程序共享这部分空间。而低3个GB的空间是用户代码，有stack ，heap ，MMap（存放动态链接库）等等，本文重点介绍stack。</p>
 <p>有关堆，栈在虚拟空间中的概念：</p>
 <p>1.栈自底向上增长，尺寸动态变化，默认临界大小是8M。</p>
@@ -384,7 +384,7 @@
 <li>每次运行地址都会变化（ASLR）</li>
 </ul>
 <p>拿一个例子说明：</p>
-<p><img src="/2019/07/30/经典栈溢出问题/%E5%9B%BE%E7%89%872.png" alt></p>
+<p><img src="/2019/07/30/经典栈溢出问题/3.2.png" alt></p>
 <p>出现的问题：</p>
 <ol>
 <li>fread时，指定的长度1024超过了buf尺寸。</li>
@@ -404,7 +404,7 @@
 <pre><code>1. 对于不同版本系统来说，硬编码的地址是硬伤。Windows尚有dll装卸引起的“移位”。</code></pre><p>​    2. 在ASLR引入以后，栈每次运行基址都是随机的。</p>
 <p><em>解决方法</em>：</p>
 <p><strong>一般情况下，ESP寄存器中的地址总是指向系统栈中且不会被溢出的数据破坏，函数返回时，ESP所指向的位置恰好是我们所淹没的返回地址的下一个位置。</strong></p>
-<p><img src="/2019/07/30/经典栈溢出问题/%E5%9B%BE%E7%89%873.png" alt></p>
+<p><img src="/2019/07/30/经典栈溢出问题/3.3.png" alt></p>
 <p>现在问题就转化成了如何寻找“JMP ESP”的字节码地址。</p>
 <p>本质：从内存空间的各个映像中寻觅”JMP ESP”的字节码地址。</p>
 <ul>
