@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="Enthusiasm And Focus">
 <meta property="og:description" content="再谈栈溢出 ​    上回书说到，向缓冲区内填充数据，如果数据很长，超过缓冲区本身容量，数据会溢出空间，覆盖合法数据。但是，可以精心设计溢出数据，造成攻击。  1. 本地缓冲区溢出简单利用已有条件： 1. 知道有问题程序返回点的精准地址，即可以把他覆盖成任意地址。 2. 有了shellcode。 3. 把有问题程序返回点地址覆盖成shellcode地址，即可成功利用缓冲区溢出。现在的目的：shel">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/08/05/再谈栈溢出/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/08/05/再谈栈溢出/360%E6%88%AA%E5%9B%BE17981129292570.png">
-<meta property="og:updated_time" content="2019-08-05T09:43:01.797Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/05/再谈栈溢出/8.6.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/05/再谈栈溢出/8.5.png">
+<meta property="og:updated_time" content="2019-08-05T09:46:30.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="再谈栈溢出">
 <meta name="twitter:description" content="再谈栈溢出 ​    上回书说到，向缓冲区内填充数据，如果数据很长，超过缓冲区本身容量，数据会溢出空间，覆盖合法数据。但是，可以精心设计溢出数据，造成攻击。  1. 本地缓冲区溢出简单利用已有条件： 1. 知道有问题程序返回点的精准地址，即可以把他覆盖成任意地址。 2. 有了shellcode。 3. 把有问题程序返回点地址覆盖成shellcode地址，即可成功利用缓冲区溢出。现在的目的：shel">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/05/再谈栈溢出/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/05/再谈栈溢出/8.6.png">
 
 
 
@@ -406,7 +406,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\0x74\0x66\0x69\0x72\0x65\0x0\0xfffffffe\0xfffffffe</span><br></pre></td></tr></table></figure>
 
 <p>给出转换表：</p>
-<p><img src="/2019/08/05/再谈栈溢出/1.png" alt></p>
+<p><img src="/2019/08/05/再谈栈溢出/8.6.png" alt></p>
 <p>给出shellcode机器码（功能为打开dos窗口）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char shellcode[]=</span><br><span class="line">&#123;</span><br><span class="line">0x8B,0xE5, 0x55,0x8B,0xEC,0x83,0xEC,0x0C,0xB8, 0x63,0x6F,0x6D,0x6D,0x6D,0x6D,0x6F,0x63,0x89, 0x45,0xF4,0xB8,0x61,0x6E,0x64,0x2E,0x89,0x45, 0xF8,0xB8,0x63,0x6F,0x6D,0x22,0x89,0x45,0xFC, 0x33,0xD2, 0x88,0x55,0xFF, 0x8D,0x45,0xF4,  0x50, 0xB8,0x24,0x98,0x01,0x78, 0xFF,0xD0</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -443,7 +443,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> passsword[<span class="number">8</span>] = <span class="string">"secret"</span>, input[<span class="number">8</span>];</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Enter your password:"</span>);</span><br><span class="line">        gets(input);</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">strcmp</span>(input, passsword) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Welcome!\n"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Sorry,your password is wrong.\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>看看结果吧</p>
-<p><img src="/2019/08/05/再谈栈溢出/360%E6%88%AA%E5%9B%BE17981129292570.png" alt></p>
+<p><img src="/2019/08/05/再谈栈溢出/8.5.png" alt></p>
 <p>What？？</p>
 <p>输入ok居然对了？？</p>
 <p>这就是缓冲区溢出造成的，具体已经解释过了，着迷人的魅力啊~</p>
