@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="逆向工程,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Enthusiasm And Focus" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="关于脱壳技术有加壳就一定有脱壳  1. 壳的基础知识 壳的加载过程：与病毒类似，比源程序更早的获得控制权。  在初始化时保存个寄存器的值，等到外壳执行完成再恢复各寄存器的内容，最后跳转到源程序运行。  获取壳本身需要用到的API地址，一般只使用GetProcAddress，GetModuleHandle和LoadLibrary三个API函数，如果需要其他的用LoadLibrary加载。  按区块解">
+<meta name="keywords" content="逆向工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向之脱壳浅谈">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/逆向之脱壳浅谈/index.html">
+<meta property="og:site_name" content="Enthusiasm And Focus">
+<meta property="og:description" content="关于脱壳技术有加壳就一定有脱壳  1. 壳的基础知识 壳的加载过程：与病毒类似，比源程序更早的获得控制权。  在初始化时保存个寄存器的值，等到外壳执行完成再恢复各寄存器的内容，最后跳转到源程序运行。  获取壳本身需要用到的API地址，一般只使用GetProcAddress，GetModuleHandle和LoadLibrary三个API函数，如果需要其他的用LoadLibrary加载。  按区块解">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-10T10:19:50.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逆向之脱壳浅谈">
+<meta name="twitter:description" content="关于脱壳技术有加壳就一定有脱壳  1. 壳的基础知识 壳的加载过程：与病毒类似，比源程序更早的获得控制权。  在初始化时保存个寄存器的值，等到外壳执行完成再恢复各寄存器的内容，最后跳转到源程序运行。  获取壳本身需要用到的API地址，一般只使用GetProcAddress，GetModuleHandle和LoadLibrary三个API函数，如果需要其他的用LoadLibrary加载。  按区块解">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/09/逆向之脱壳浅谈/">
+
+
+
+
+
+  <title>逆向之脱壳浅谈 | Enthusiasm And Focus</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Enthusiasm And Focus</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Always Maintain a Santa Claus</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            Commonweal 404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/逆向之脱壳浅谈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tfire">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Enthusiasm And Focus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">逆向之脱壳浅谈</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-09T17:53:59+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="关于脱壳技术"><a href="#关于脱壳技术" class="headerlink" title="关于脱壳技术"></a><center>关于脱壳技术</center></h3><p><em>有加壳就一定有脱壳</em></p>
+<hr>
+<h4 id="1-壳的基础知识"><a href="#1-壳的基础知识" class="headerlink" title="1. 壳的基础知识"></a>1. 壳的基础知识</h4><ol>
+<li><p>壳的加载过程：与病毒类似，比源程序更早的获得控制权。</p>
+<ol>
+<li><p>在初始化时保存个寄存器的值，等到外壳执行完成再恢复各寄存器的内容，最后跳转到源程序运行。</p>
+</li>
+<li><p>获取壳本身需要用到的API地址，一般只使用GetProcAddress，GetModuleHandle和LoadLibrary三个API函数，如果需要其他的用LoadLibrary加载。</p>
+</li>
+<li><p>按区块解密，把解密的区块数据按照区块的定义放在内存中合适的位置。</p>
+</li>
+<li><p>IAT的初始化</p>
+</li>
+<li><p>重定位项的处理，文件执行时将被映射到指定内存地址中，这个初始内存地址称为基址。对EXE的程序文件来说，Windows操作系统会尽量满足其要求。例如，某EXE文件的基地址为400000h, 而运行时 Windows操作系统提供给程序的基地址也是400000h, 在这种情况下就不需要进行地址 ”重定位” 了。由于不需要对EXE文件进行 ”重定位”，加壳软件干脆删除了原程序文件中用千保存重定位信息的区块（这样做可以使加壳后的文件更加小巧，有些工具提供的 “Wipe Reloc”功能其实就起到了这个作用）。</p>
+</li>
+<li><p>Hook API。在程序文件中，输入表的作用是让Windows操作系统在程序运行时将API的实际地址提供给程序使用。在程序的第1行代码被执行之前，Windows操作系统就完成了这项工作。<br>壳大都在修改原程序文件的输入表后自己模仿Windows操作系统的工作流程，向输入表中填充相关的数据。在填充过程中，外壳可以填充 HookAPI 代码的地址，从而间接获得程序的控制权。</p>
+</li>
+<li><p>跳转到程序原入口点(OEP)，从这个时候起，壳就把控制权还给原程序了。越来越多的加密壳先将 OEP 代码段搬到外壳的地址空间里，再将这段代码清除（这种技术称为 “Stolen Bytes”)。这样，OEP与外壳之间那条明显的 “分界线” 就消失了，脱壳的难度也就增加了。</p>
+</li>
+</ol>
+</li>
+<li><p>脱壳(主要是手动脱壳)</p>
+<ol>
+<li><em>查找真正的程序入口点</em></li>
+<li><em>抓取内存映像文件</em></li>
+<li><em>重建PE文件</em><br>程序 执行时，外壳代码首先获得控制权，模拟windows加载器，将原来的程序回复到内存中，此时内存中的数据就是加壳前的映像文件。适时将其抓取并修改，即可还原到加壳前的状态。</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h4 id="2-脱壳"><a href="#2-脱壳" class="headerlink" title="2. 脱壳"></a>2. 脱壳</h4><ol>
+<li><h6 id="寻找OEP"><a href="#寻找OEP" class="headerlink" title="寻找OEP"></a>寻找OEP</h6><p><em>当外壳所保护的程序运行时，会先执行外壳程序，外壳程序负责将在内存中把源程序解压还原，并将控制权还给解压后的真正程序，再跳转到原来的程序入口点。这个入口点称为“OEP”</em></p>
+<ol>
+<li><p>根据跨段指令寻找OEP：<br>当外壳代码处理完毕会跳转带程序本身的代码处；所以根据跨段的转移指令就能找到真正的程序入口点。</p>
+</li>
+<li><p>根据内存访问断点寻找OEP：待代码段解压完毕对代码段设置内存访问断点。如果之前设置了断点，程序会不停的对代码进行写入的指令处中断。解决方法：即设置两次内存断点。因为一般的壳会依次对.text、 .rdata 、 .data 、 .rsrc区块进行解压处理，所以，可以先在.rdata 、 .data 等 区块处设置内存访问断点，待程序中断， 代码段已解压，再对代码段(.text块）设置内存访问断点，到达OEP。</p>
+</li>
+<li><p>根据栈平衡原理寻找OEP：在编写加壳软件时，必须保证外壳初始化的现场环境（各寄存器值）与原程序的现场环境是相同的（主要是esp、 ebp等重要的寄存器值）。加壳程序在初始化时保存各寄存器的值，待外壳执行完毕恢复 各寄存器的内容， 最后跳转到原程序执行。通常用pushad/popad、pushfd/popfd指令对来保存与恢复现场环境 。其中，eflags (标志寄存器 ）不是太重要， 一般不 处理它。也就是说，在编写加 壳软件时，必须遵守栈平衡原理。</p>
+<table>
+<thead>
+<tr>
+<th align="center">PUSHAD</th>
+<th>相当于push eax/ecx/edx等</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">…</td>
+<td>外壳代码</td>
+</tr>
+<tr>
+<td align="center">POPAD</td>
+<td>相当于pop eax/ecx/edx等</td>
+</tr>
+<tr>
+<td align="center">JMP OEP</td>
+<td>准备跳到入口点</td>
+</tr>
+<tr>
+<td align="center">OEP:   …</td>
+<td>解压后程序的源代码</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li><h6 id="抓取内存映像"><a href="#抓取内存映像" class="headerlink" title="抓取内存映像"></a>抓取内存映像</h6><p>抓取内存映像， 也称 “转存” (Dump), 是指把内存指定地址的映像文件 读出，用文件等形式将其保存下来的过程。<br>脱壳时，在何时Dump 文件是有一定技巧的。在一般情况下，当外壳来到 OEP 处时进行Dump 是正确的。如果等到程序运行起来， 由于一些变量已经初始化了， 不适合进行 Dump。在外壳处理过程中， 外壳要把压缩后的全部代码数据释放到内存中， 并初始化一些项目。</p>
+<p><strong>Dump原理：</strong><br>常用的Dump软件 有LordPE、PETools等。这类工具一般利用 Module32Next来获取欲Dump 进 程的 基本信息。Module32Next 函数的原型如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">Module32Next</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">HANDLE hSnapshot ,</span></span></span><br><span class="line"><span class="function"><span class="params">LPMODULEENTRY32 lpme</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>•    hSnapshot : 由先前的CreateToolhelp32Snapshot 函数返回的快照。<br>•    lpme: 指向MODULEENTRY32结构的指针。</p>
+<p><em>每次执行函数后，都会把一个进程的信息填入MODULEENTRY32结构。</em></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagMODULEENTRY32</span> &#123;</span></span><br><span class="line">DWORD dwSize;</span><br><span class="line">DWORD th32ModuleID;</span><br><span class="line">DWORD th32ProcessID;</span><br><span class="line">DWORD GlblcntUsage;</span><br><span class="line">DWORD ProccntUsage;</span><br><span class="line">BYTE *modBaseAddr;</span><br><span class="line">DWORD modBaseSize;</span><br><span class="line">HMODULE hModule;</span><br><span class="line">TCHAR szModule[MAX_PATH];</span><br><span class="line">TCHAR szExePath[MAX_PATH];</span><br><span class="line">&#125; MODULEENTRY32, *PMODULEENTRY32, *LPMODULEENTRY32;</span><br></pre></td></tr></table></figure>
+
+<p>LordPE和ProcDump都是先根据此结构中的 modBaseSize和modBaseAddr 字段得到进程的映像 大小和基址，再调用 ReadProcessMemory来读取进程内的数据的。如果读取成功，ProcDump会检测 IMAGE_DOS_SIGN ATURE和IMAGE_NT_SIGNATURE 是否完整。如果完整，就基本上不会对剩余的大多数字段进行检验了；如果不 完整， 会根据 szExePath字段打开进程的原始文件 ，读取其文件头以取代进程的文件头。LordPE则更简单，根本不使用进程的文件头，而直接读取原始文件 的文件头， 在读取内存数据后，再把进程中的数据保存到磁盘文件 中。</p>
+</li>
+</ol>
+<ol start="3">
+<li><h6 id="重建PE文件"><a href="#重建PE文件" class="headerlink" title="重建PE文件"></a>重建PE文件</h6><p>破坏原程序的输入表是加密外壳必须具备的功能。在脱壳中，输入表处理是此要求脱壳者对PE格式中的输入表概念非常清楚。</p>
+<ol>
+<li>输入表重建的原理：在输入表结构中，与实际运行相关的主要是IAT结构，这个结构用于保存 API的实际地址。PE文件运行时将初始化输入表的这一部分，Wind ows加载器首先搜索 OriginalFirstThunk, 如果存在，加载程序将迭代搜索数组中的每个指针，找到每个IMAGE_IMPORT_BY_NA ME 结构所指向的输入函数的地址，然后，加载器用函数真正的入口地址代替由FirstThunk指向的IMAGE_THUNK_DATA 数组里元素的值。 此时，输入表中的其他部分就不重要了，程序依靠IAT提供的函数地址就可以正常运行。外壳程序一般都会修改原程序文件的输入，然后自己模仿PE装载器来填充IAT的相关数据，也就是说，内存中只有一个IAT, 原程序的输入表不在内存中。输入表重建就是根据这个IAT还原整个输入表的结构（即如图16.17所示的这个结构），包括IID结构及其各成员指向的数据等。一些加密软件为 了防止输入表被还原， 就在IAT加密上大作文章。此时， 由外壳填充到IAT里 的不是实际的 API 地址，而是用于Hook API的外壳 代码的地址 。这样， 外壳中的代码一旦完成了加 载工作，在进入原程序的代码之后，仍然能够间接 获得程序的控制权。因为程序总要与系统打交道，与系统打交道的途径是 API, 而API的地址已经被替换成了外壳的Hook API的地址，所以， 每次程序与系统打交道，都会让外壳的代码获得一次 控制权。这样， 外壳 就可以 进行反跟踪， 从而继续保护软件， 同时完成某些特殊的任务了 。综上所述， <strong>重建输入表的关键是获取未加密的IAT。 一般的 做法是跟踪加壳程序对IAT的处理过程， 修改相关指令， 不让外壳加密 IAT。</strong></li>
+<li>确定IAT的地址与大小：一般程序的IAT是连续排列的， 以一个DWORD字的O作为结束， 因此， 只要确定IAT的一个点， 就能获得整个IAT的地址和大小。</li>
+<li>根据IAT重建输入表：数据处理完成后，UPX外壳使用了一次跨段的转移指令勺mp)跳转到OEP,发现OEP的地址为401000h,因此只需要在4052BFh处设置断点。程序中断后，运行LordPE,将内存数据Dump出来并保存为dumped.exe。用十六进制工具在dumped.exe文件中找一块空间，在这里选择2100h,将表16.1中的DLL名和<br>函数名写进去，如图16.27所示。DLL名与函数名的位置可以任意指定。在每个函数名前面要留2 字节来存放函数的序号，序号可以为O;每个函数名后的1字节为O;每个函数名或DLL名的起始地址必须按偶数对齐， 空隙用0填充。由千是内存映像文件，文件 偏移地址与相对虚拟地址(RVA)的值是相等的，IAT 的位置很重要，不能改变，否则相关指令就找不到函数调用地址了（除非再修正这些函数调用的地址）。IAT 中的内容可以不重新构造，当加载PE文件时，Windows操作系统会对其进行填充。</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/逆向工程/" rel="tag"># 逆向工程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/05/再谈栈溢出/" rel="next" title="再谈栈溢出">
+                <i class="fa fa-chevron-left"></i> 再谈栈溢出
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/1.jpeg" alt="tfire">
+            
+              <p class="site-author-name" itemprop="name">tfire</p>
+              <p class="site-description motion-element" itemprop="description">waiting wind , chasing dream...</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于脱壳技术"><span class="nav-number">1.</span> <span class="nav-text">关于脱壳技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-壳的基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">1. 壳的基础知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-脱壳"><span class="nav-number">1.2.</span> <span class="nav-text">2. 脱壳</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#寻找OEP"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">寻找OEP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#抓取内存映像"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">抓取内存映像</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#重建PE文件"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">重建PE文件</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tfire</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
