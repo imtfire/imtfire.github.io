@@ -90,7 +90,7 @@
 <meta property="og:description" content="我的二进制之路当我狠下心想学习二进制安全的时候，可能我已经疯了。 ​                                                                                        ——写在前面  ​    先聊聊其他的，关于二进制安全这一方面，我一开始也刷了很多别人的评论与看法，有从入门到放弃的，有行业顶尖大牛的，褒贬不一。但比较">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/07/30/漫漫二进制/1.jpeg">
-<meta property="og:updated_time" content="2019-07-29T16:26:46.165Z">
+<meta property="og:updated_time" content="2019-08-15T16:20:46.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="漫漫二进制">
 <meta name="twitter:description" content="我的二进制之路当我狠下心想学习二进制安全的时候，可能我已经疯了。 ​                                                                                        ——写在前面  ​    先聊聊其他的，关于二进制安全这一方面，我一开始也刷了很多别人的评论与看法，有从入门到放弃的，有行业顶尖大牛的，褒贬不一。但比较">
@@ -403,6 +403,17 @@
 5. 安全软件开发之道
 6. The Shellcodes Handbook</code></pre></li>
 </ul>
+<hr>
+<ul>
+<li><h3 id="关于逆向："><a href="#关于逆向：" class="headerlink" title="关于逆向："></a>关于逆向：</h3><h5 id="0x01-打基础"><a href="#0x01-打基础" class="headerlink" title="0x01: 打基础"></a>0x01: 打基础</h5><p>欲学逆向，先懂正向。首先至少会点C和C++吧，要是只会个python或java、VB、C#什么的，连指针都不熟悉就有点难整了，还得会点8086汇编，8086学完还得学x86汇编（有了8086的基础学起来会很快），在这期间可以破解一些简单的小软件找点成就感（网上教程和文章多的是，后面我们团队也会出软件破解系列的教程）。</p>
+<p>资料获取：C和C++就不说了，8086汇编可以看王爽老师的《汇编语言》和小甲鱼的汇编视频教程，x86可以看《<em>Windows</em>环境下<em>32</em>位汇编语言程序设计》。</p>
+<h5 id="0x02-开始学习逆向"><a href="#0x02-开始学习逆向" class="headerlink" title="0x02: 开始学习逆向"></a>0x02: 开始学习逆向</h5><p>打完基础后，可以开始逆向分析一些小程序，最好是手里有源码或者自己写一个，用OD在入口点直接跟踪分析到结束，一边跟源码作对比。学习代码编译成汇编会是什么样的，编译器附加了什么，debug和realease版本又有什么区别，不同语言编译后的汇编代码又有什么特点，F2、内存、硬件断点的原理又是啥……还有学习PE结构，了解文件加载运行机制，这是分析加壳软件和病毒的必备基础：如何在PE中插入代码或EXE文件，ESP定律、二次三次内存断点是如何走到OEP的。</p>
+<p>资料获取：编译原理可以看《C++反汇编与逆向分析》，PE结构可以看小甲鱼的解密系列-系统篇视频教程，还可以看《Windows PE权威指南》、《逆向工程核心原理》，还有看雪大佬的《加密与解密》。</p>
+<h5 id="0x03-入门"><a href="#0x03-入门" class="headerlink" title="0x03: 入门"></a>0x03: 入门</h5><p>此时逆向不能再单靠OD了，得学学神器IDA，IDA能将大部分代码反编译成类C代码，会方便很多，能静态分析的没必要动态跟踪，IDA还有很多强大的功能这里就不一一列举了。然后还得深入学习系统底层运行机制，了解内核工作原理；看别人分析病毒的文章，并自己尝试着分析一下；学习堆栈溢出原理及利用方法等等……</p>
+<p>资料获取：《IDA Pro权威指南》、吾爱破解和看雪等论坛、《Windows内核工作原理》、《0day安全：软件漏洞分析技术》、《软件调试》、《Windows核心编程》等等。</p>
+</li>
+</ul>
+<hr>
 <p>​    冰山一角。</p>
 <p>​    先列下来这么多，以后有什么继续要学的再慢慢补充。</p>
 <p>​    欢迎大家提出意见，一起交流学习。</p>
@@ -584,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#我的二进制之路"><span class="nav-number">1.</span> <span class="nav-text">我的二进制之路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#我的二进制之路"><span class="nav-number">1.</span> <span class="nav-text">我的二进制之路</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#关于逆向："><span class="nav-number"></span> <span class="nav-text">关于逆向：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#0x01-打基础"><span class="nav-number">0.1.</span> <span class="nav-text">0x01: 打基础</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#0x02-开始学习逆向"><span class="nav-number">0.2.</span> <span class="nav-text">0x02: 开始学习逆向</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#0x03-入门"><span class="nav-number">0.3.</span> <span class="nav-text">0x03: 入门</span></a></li></ol></li></div>
             
 
           </div>
