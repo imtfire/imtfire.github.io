@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="逆向工程,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Enthusiasm And Focus" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="破解Crack Me-Acid burn 找了一份Crack Me的大合集，来巩固一下所学知识，查漏补缺。话不多说，直接上菜。  总览：该软件由两部分组成，即分别需要破解serial以及name-serial。  1.serial的破解用OD打开，F9运行，随便输入，弹出窗口提示错误：Try Again!! 此处有两种方式：1.用字符串搜索：Try Again!! 2.在MessageBoxA函">
+<meta name="keywords" content="逆向工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向之Crack Me第一期">
+<meta property="og:url" content="http://yoursite.com/2019/08/18/逆向之cracker-me-1/index.html">
+<meta property="og:site_name" content="Enthusiasm And Focus">
+<meta property="og:description" content="破解Crack Me-Acid burn 找了一份Crack Me的大合集，来巩固一下所学知识，查漏补缺。话不多说，直接上菜。  总览：该软件由两部分组成，即分别需要破解serial以及name-serial。  1.serial的破解用OD打开，F9运行，随便输入，弹出窗口提示错误：Try Again!! 此处有两种方式：1.用字符串搜索：Try Again!! 2.在MessageBoxA函">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-18T13:16:43.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逆向之Crack Me第一期">
+<meta name="twitter:description" content="破解Crack Me-Acid burn 找了一份Crack Me的大合集，来巩固一下所学知识，查漏补缺。话不多说，直接上菜。  总览：该软件由两部分组成，即分别需要破解serial以及name-serial。  1.serial的破解用OD打开，F9运行，随便输入，弹出窗口提示错误：Try Again!! 此处有两种方式：1.用字符串搜索：Try Again!! 2.在MessageBoxA函">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/18/逆向之cracker-me-1/">
+
+
+
+
+
+  <title>逆向之Crack Me第一期 | Enthusiasm And Focus</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Enthusiasm And Focus</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Always Maintain a Santa Claus</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            Commonweal 404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/逆向之cracker-me-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tfire">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Enthusiasm And Focus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">逆向之Crack Me第一期</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T19:14:51+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="破解Crack-Me-Acid-burn"><a href="#破解Crack-Me-Acid-burn" class="headerlink" title=" 破解Crack Me-Acid burn"></a><center> 破解Crack Me-Acid burn</center></h4><hr>
+<p>找了一份Crack Me的大合集，来巩固一下所学知识，查漏补缺。话不多说，直接上菜。</p>
+<hr>
+<h6 id="总览："><a href="#总览：" class="headerlink" title="总览："></a>总览：</h6><p>该软件由两部分组成，即分别需要破解serial以及name-serial。</p>
+<hr>
+<h5 id="1-serial的破解"><a href="#1-serial的破解" class="headerlink" title="1.serial的破解"></a>1.serial的破解</h5><p>用OD打开，F9运行，随便输入，弹出窗口提示错误：Try Again!!</p>
+<p>此处有两种方式：1.用字符串搜索：Try Again!! 2.在MessageBoxA函数处下断点。</p>
+<p>第二种方式较为常规，第一种比较简单，此处采用第二种。</p>
+<p>断点之后，在最近的return处返回用户代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">0019F710   0042A1AE  /CALL to MessageBoxA from Acid_bur.0042A1A9</span><br><span class="line">0019F714   00040A52  |hOwner = 00040A52 (&apos;Acid burn&apos;,class=&apos;TApplication&apos;)</span><br><span class="line">0019F718   0042F58C  |Text = &quot;Try Again!!&quot;</span><br><span class="line">0019F71C   0042F584  |Title = &quot;Failed!&quot;</span><br><span class="line">0019F720   00000000  \Style = MB_OK|MB_APPLMODAL</span><br><span class="line">0019F724   0019F754  Pointer to next SEH record</span><br><span class="line">0019F728   0042A1D0  SE handler</span><br><span class="line">0019F72C   0019F748</span><br><span class="line">0019F730   022A9778</span><br><span class="line">0019F734   022A9778</span><br><span class="line">0019F738   022A674C</span><br><span class="line">0019F73C   022AA4F8</span><br><span class="line">0019F740   000608DE</span><br><span class="line">0019F744   022A9778</span><br><span class="line">0019F748  /0019F774</span><br><span class="line">0019F74C  |0042F509  RETURN to Acid_bur.0042F509 from Acid_bur.0042A170</span><br></pre></td></tr></table></figure>
+
+<p>返回至用户代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">0042F4D5     /75 1A         jnz     short 0042F4F1					 ;  此处判断，若不相等，则跳转至0042F4F1</span><br><span class="line">0042F4D7     |6A 00         push    0</span><br><span class="line">0042F4D9  |. |B9 64F54200   mov     ecx, 0042F564                    ;  Congratz!</span><br><span class="line">0042F4DE  |. |BA 70F54200   mov     edx, 0042F570                    ;  God Job dude !! =)</span><br><span class="line">0042F4E3  |. |A1 480A4300   mov     eax, dword ptr [430A48]</span><br><span class="line">0042F4E8  |. |8B00          mov     eax, dword ptr [eax]</span><br><span class="line">0042F4EA  |. |E8 81ACFFFF   call    0042A170</span><br><span class="line">0042F4EF  |. |EB 18         jmp     short 0042F509</span><br><span class="line">0042F4F1  |&gt; \6A 00         push    0                                ;  跳转至此处</span><br><span class="line">0042F4F3  |.  B9 84F54200   mov     ecx, 0042F584                    ;  Failed!</span><br><span class="line">0042F4F8  |.  BA 8CF54200   mov     edx, 0042F58C                    ;  Try Again!!</span><br><span class="line">0042F4FD  |.  A1 480A4300   mov     eax, dword ptr [430A48]</span><br><span class="line">0042F502  |.  8B00          mov     eax, dword ptr [eax]</span><br><span class="line">0042F504  |.  E8 67ACFFFF   call    0042A170</span><br><span class="line">0042F509  |&gt;  33C0          xor     eax, eax						 ; return返回至此处,向上查找关键词</span><br></pre></td></tr></table></figure>
+
+<p>在0042F4D5处可使用爆破法，用<code>nop</code>替换<code>jnz short 0042F4F1</code>,这个比较简单，不如去查找serial的值</p>
+<p>再往上看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0042F4CA  |.  8B45 F0       mov     eax, dword ptr [ebp-10]</span><br><span class="line">0042F4CD  |.  8B55 F4       mov     edx, dword ptr [ebp-C]</span><br><span class="line">0042F4D0  |.  E8 2745FDFF   call    004039FC</span><br><span class="line">0042F4D5      75 1A         jnz     short 0042F4F1</span><br></pre></td></tr></table></figure>
+
+<p>在<code>jnz  short 0042F4F1</code>判断指令前，有<code>call 004039FC</code>来判断输入数值与原有数值进行比较，即以上两条mov指令。</p>
+<p>在0042F4D0处下断点。观察eax与edx的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EAX 022A7840 ASCII &quot;454564&quot;             ; 此处值为我输入的值</span><br><span class="line">...</span><br><span class="line">EDX 022AA4B4 ASCII &quot;Hello Dude&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>由此猜测Hello Dude为密钥，验证正确</p>
+<hr>
+<h5 id="2-name-serial的破解"><a href="#2-name-serial的破解" class="headerlink" title="2.name-serial的破解"></a>2.name-serial的破解</h5><p>同理，在MessageBoxA处下断点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">0019F704   0042A1AE  /CALL to MessageBoxA from Acid_bur.0042A1A9</span><br><span class="line">0019F708   00250A82  |hOwner = 00250A82 (&apos;Acid burn&apos;,class=&apos;TApplication&apos;)</span><br><span class="line">0019F70C   0042FB80  |Text = &quot;Sorry , The serial is incorect !&quot;</span><br><span class="line">0019F710   0042FB74  |Title = &quot;Try Again!&quot;</span><br><span class="line">0019F714   00000000  \Style = MB_OK|MB_APPLMODAL</span><br><span class="line">0019F718   0019F748  Pointer to next SEH record</span><br><span class="line">0019F71C   0042A1D0  SE handler</span><br><span class="line">0019F720   0019F73C</span><br><span class="line">0019F724   02281304</span><br><span class="line">0019F728   00000509</span><br><span class="line">0019F72C   022863FC  ASCII &quot;x鸟&quot;</span><br><span class="line">0019F730   0228A494</span><br><span class="line">0019F734   000C0A8C</span><br><span class="line">0019F738   02281304</span><br><span class="line">0019F73C  /0019F774</span><br><span class="line">0019F740  |0042FB37  RETURN to Acid_bur.0042FB37 from Acid_bur.0042A170        ; 在此处return</span><br></pre></td></tr></table></figure>
+
+<p>返回至用户代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">0042FAF8  |.  8B55 F0       mov     edx, dword ptr [ebp-10]			 </span><br><span class="line">0042FAFB  |.  8B45 F4       mov     eax, dword ptr [ebp-C]</span><br><span class="line">0042FAFE  |.  E8 F93EFDFF   call    004039FC</span><br><span class="line">0042FB03      75 1A         jnz     short 0042FB1F					 ; 在此处判断，若不等于则跳转至0042FB1F</span><br><span class="line">0042FB05  |.  6A 00         push    0</span><br><span class="line">0042FB07  |.  B9 CCFB4200   mov     ecx, 0042FBCC                    ;  Congratz !!</span><br><span class="line">0042FB0C  |.  BA D8FB4200   mov     edx, 0042FBD8                    ;  Good job dude =)</span><br><span class="line">0042FB11  |.  A1 480A4300   mov     eax, dword ptr [430A48]</span><br><span class="line">0042FB16  |.  8B00          mov     eax, dword ptr [eax]</span><br><span class="line">0042FB18  |.  E8 53A6FFFF   call    0042A170</span><br><span class="line">0042FB1D  |.  EB 18         jmp     short 0042FB37</span><br><span class="line">0042FB1F  |&gt;  6A 00         push    0								 ; 跳转至此处</span><br><span class="line">0042FB21  |.  B9 74FB4200   mov     ecx, 0042FB74                    ;  Try Again!</span><br><span class="line">0042FB26  |.  BA 80FB4200   mov     edx, 0042FB80                    ;  Sorry , The serial is incorect !</span><br><span class="line">0042FB2B  |.  A1 480A4300   mov     eax, dword ptr [430A48]</span><br><span class="line">0042FB30  |.  8B00          mov     eax, dword ptr [eax]</span><br><span class="line">0042FB32  |.  E8 39A6FFFF   call    0042A170</span><br><span class="line">0042FB37  |&gt;  33C0          xor     eax, eax						 ; 返回至此处，往上看到关键词</span><br></pre></td></tr></table></figure>
+
+<p>同理可用爆破法将<code>jnz  short 0042FB1F</code>替换，则爆破完成。</p>
+<p>往上走，找到最近的几个call</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0042FAEA  |.  8D55 F0       lea     edx, dword ptr [ebp-10]</span><br><span class="line">0042FAED  |.  8B83 E0010000 mov     eax, dword ptr [ebx+1E0]</span><br><span class="line">0042FAF3  |.  E8 60AFFEFF   call    0041AA58						 ; call1</span><br><span class="line">0042FAF8  |.  8B55 F0       mov     edx, dword ptr [ebp-10]</span><br><span class="line">0042FAFB  |.  8B45 F4       mov     eax, dword ptr [ebp-C]</span><br><span class="line">0042FAFE  |.  E8 F93EFDFF   call    004039FC						 ; call2</span><br><span class="line">0042FB03      75 1A         jnz     short 0042FB1F</span><br></pre></td></tr></table></figure>
+
+<p>在第一个call1处下断点，观察eax，ebx，ecx，edx等寄存器的值；</p>
+<p>发现为空值；</p>
+<p>则继续在第二个call2处下断点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EAX 0222A460 ASCII&quot;CW-4018-CRACKED&quot;</span><br><span class="line">...</span><br><span class="line">EDX 0222A47C ASCII&quot;12313&quot;				; 此处为输入的密码</span><br></pre></td></tr></table></figure>
+
+<p>说明 EAX在call1处产生</p>
+<p>然后跟进<code>call  0041AA58</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">0041AA58  /$  53            push    ebx</span><br><span class="line">0041AA59  |.  56            push    esi</span><br><span class="line">0041AA5A  |.  57            push    edi</span><br><span class="line">0041AA5B  |.  8BFA          mov     edi, edx</span><br><span class="line">0041AA5D  |.  8BF0          mov     esi, eax</span><br><span class="line">0041AA5F  |.  8BC6          mov     eax, esi</span><br><span class="line">0041AA61  |.  E8 A2FFFFFF   call    0041AA08</span><br><span class="line">0041AA66  |.  8BD8          mov     ebx, eax</span><br><span class="line">0041AA68  |.  8BC7          mov     eax, edi</span><br><span class="line">0041AA6A  |.  8BCB          mov     ecx, ebx</span><br><span class="line">0041AA6C  |.  33D2          xor     edx, edx</span><br><span class="line">0041AA6E  |.  E8 E18CFEFF   call    00403754</span><br><span class="line">0041AA73  |.  85DB          test    ebx, ebx</span><br><span class="line">0041AA75  |.  74 0C         je      short 0041AA83</span><br><span class="line">0041AA77  |.  8D4B 01       lea     ecx, dword ptr [ebx+1]</span><br><span class="line">0041AA7A  |.  8B17          mov     edx, dword ptr [edi]</span><br><span class="line">0041AA7C  |.  8BC6          mov     eax, esi</span><br><span class="line">0041AA7E  |.  E8 95FFFFFF   call    0041AA18</span><br><span class="line">0041AA83  |&gt;  5F            pop     edi</span><br><span class="line">0041AA84  |.  5E            pop     esi</span><br><span class="line">0041AA85  |.  5B            pop     ebx</span><br><span class="line">0041AA86  \.  C3            retn</span><br></pre></td></tr></table></figure>
+
+<p>在此处跟进，并未发现EAX的ASCII值，即没有发现注册码，则初步判定注册码不是在这里生成的。但是这么想就与之前的猜测完全推翻了，说明我们的想法有问题，即思路有问题。既然他的码不是及时算出来的，那肯定就是事先算好的，我们再次回到产生注册码的CALL那里，向上查找，F8单步进行查看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">0042FA4D  |.  A1 6C174300   mov eax,dword ptr ds:[0x43176C]          ;  // name/Tag</span><br><span class="line">0042FA52  |.  E8 D96EFDFF   call 00406930                            ;  // 关键CALL</span><br><span class="line">0042FA57  |.  83F8 04       cmp eax,0x4                              ;  // 判断tag/serial 是否合格</span><br><span class="line">0042FA5A  |.  7D 1D         jge short 0042FA79</span><br><span class="line">0042FA5C  |.  6A 00         push 0x0</span><br><span class="line">0042FA5E  |.  B9 74FB4200   mov ecx,0042FB74                         ;  ASCII 54,&quot;Try Again!&quot;</span><br><span class="line">0042FA63  |.  BA 80FB4200   mov edx,0042FB80                         ;  ASCII 53,&quot;orry , The serial is incorect !&quot;</span><br><span class="line">0042FA68  |.  A1 480A4300   mov eax,dword ptr ds:[0x430A48]</span><br><span class="line">0042FA6D  |.  8B00          mov eax,dword ptr ds:[eax]</span><br><span class="line">0042FA6F  |.  E8 FCA6FFFF   call 0042A170</span><br><span class="line">0042FA74  |.  E9 BE000000   jmp 0042FB37</span><br><span class="line">0042FA79  |&gt;  8D55 F0       lea edx,[local.4]</span><br><span class="line">0042FA7C  |.  8B83 DC010000 mov eax,dword ptr ds:[ebx+0x1DC]</span><br><span class="line">0042FA82  |.  E8 D1AFFEFF   call 0041AA58</span><br><span class="line">0042FA87  |.  8B45 F0       mov eax,[local.4]                        ;  EAX=112233的地址</span><br><span class="line">0042FA8A  |.  0FB600        movzx eax,byte ptr ds:[eax]              ;  第一个字节1=0x31</span><br><span class="line">0042FA8D  |.  F72D 50174300 imul dword ptr ds:[0x431750]             ;  *0x29</span><br><span class="line">0042FA93  |.  A3 50174300   mov dword ptr ds:[0x431750],eax          ;  eax=0x7d9=0x29*0x31</span><br><span class="line">0042FA98  |.  A1 50174300   mov eax,dword ptr ds:[0x431750]</span><br><span class="line">0042FA9D  |.  0105 50174300 add dword ptr ds:[0x431750],eax          ;  加一倍</span><br><span class="line">0042FAA3  |.  8D45 FC       lea eax,[local.1]</span><br><span class="line">0042FAA6  |.  BA ACFB4200   mov edx,0042FBAC</span><br><span class="line">0042FAAB  |.  E8 583CFDFF   call 00403708</span><br><span class="line">0042FAB0  |.  8D45 F8       lea eax,[local.2]</span><br><span class="line">0042FAB3  |.  BA B8FB4200   mov edx,0042FBB8</span><br><span class="line">0042FAB8  |.  E8 4B3CFDFF   call 00403708</span><br><span class="line">0042FABD  |.  FF75 FC       push [local.1]</span><br><span class="line">0042FAC0  |.  68 C8FB4200   push 0042FBC8                            ;  UNICODE &quot;-&quot;</span><br><span class="line">0042FAC5  |.  8D55 E8       lea edx,[local.6]                        ;  12F990</span><br><span class="line">0042FAC8  |.  A1 50174300   mov eax,dword ptr ds:[0x431750]          ;  4018</span><br><span class="line">0042FACD  |.  E8 466CFDFF   call 00406718</span><br><span class="line">0042FAD2  |.  FF75 E8       push [local.6]                           ;  // 注册码中间的值</span><br><span class="line">0042FAD5  |.  68 C8FB4200   push 0042FBC8                            ;  UNICODE &quot;-&quot;</span><br><span class="line">0042FADA  |.  FF75 F8       push [local.2]</span><br><span class="line">0042FADD  |.  8D45 F4       lea eax,[local.3]</span><br><span class="line">0042FAE0  |.  BA 05000000   mov edx,0x5</span><br><span class="line">0042FAE5  |.  E8 C23EFDFF   call 004039AC</span><br><span class="line">0042FAEA  |.  8D55 F0       lea edx,[local.4]                        ;  edx=0012F998</span><br><span class="line">0042FAED  |.  8B83 E0010000 mov eax,dword ptr ds:[ebx+0x1E0]         ;  eax=00A85E4C</span><br><span class="line">0042FAF3  |.  E8 60AFFEFF   call 0041AA58                            ;  // 注册码CALL</span><br><span class="line">0042FAF8  |.  8B55 F0       mov edx,[local.4]                        ;  // EDX=44556677</span><br><span class="line">0042FAFB  |.  8B45 F4       mov eax,[local.3]                        ;  // EAX=CW-4018-CRACKED</span><br><span class="line">0042FAFE  |.  E8 F93EFDFF   call 004039FC</span><br><span class="line">0042FB03      75 1A         jnz short 0042FB1F                       ;  // 这个JNZ条件判断很关键？</span><br><span class="line">0042FB05  |.  6A 00         push 0x0</span><br><span class="line">0042FB07  |.  B9 CCFB4200   mov ecx,0042FBCC</span><br><span class="line">0042FB0C  |.  BA D8FB4200   mov edx,0042FBD8</span><br><span class="line">0042FB11  |.  A1 480A4300   mov eax,dword ptr ds:[0x430A48]</span><br><span class="line">0042FB16  |.  8B00          mov eax,dword ptr ds:[eax]</span><br><span class="line">0042FB18  |.  E8 53A6FFFF   call 0042A170</span><br><span class="line">0042FB1D  |.  EB 18         jmp short 0042FB37                       ;  // 这个跳转是不是很可疑？</span><br><span class="line">0042FB1F  |&gt;  6A 00         push 0x0</span><br><span class="line">0042FB21  |.  B9 74FB4200   mov ecx,0042FB74                         ;  ASCII 54,&quot;ry Again!&quot;</span><br><span class="line">0042FB26  |.  BA 80FB4200   mov edx,0042FB80                         ;  ASCII 53,&quot;orry , The serial is incorect !&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结：取第一个字母的ASNI的数字，如112233中第一个字符1对应数字0x31，然后用它乘以0x29，结果再自增一倍(即x2)，将得到的数字转为10进制的字符串，在前加上”CW-”,后加上”-CRACKED”，就组成了用户名对应的注册码。</strong></p>
+<p>C++实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"iostream"</span></span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> _tmain(<span class="keyword">int</span> argc, _TCHAR* argv[])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Input Name:\r\n"</span>);</span><br><span class="line">    <span class="comment">// 取第一个字符值</span></span><br><span class="line">    <span class="keyword">int</span> cName = getchar();</span><br><span class="line">    <span class="keyword">if</span> ( cName &gt; <span class="number">0x21</span>) <span class="comment">// 只处理可见字符</span></span><br><span class="line">    &#123;</span><br><span class="line">        cName *= <span class="number">0x29</span>; <span class="comment">// 乘法</span></span><br><span class="line">        cName *= <span class="number">2</span>; <span class="comment">// 自增一倍</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Serial: CW-%4d-CRACKED\r\n"</span>,cName);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"input error!\r\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/逆向工程/" rel="tag"># 逆向工程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/09/逆向之脱壳浅谈/" rel="next" title="逆向之脱壳浅谈">
+                <i class="fa fa-chevron-left"></i> 逆向之脱壳浅谈
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/1.jpeg" alt="tfire">
+            
+              <p class="site-author-name" itemprop="name">tfire</p>
+              <p class="site-description motion-element" itemprop="description">waiting wind , chasing dream...</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#破解Crack-Me-Acid-burn"><span class="nav-number">1.</span> <span class="nav-text"> 破解Crack Me-Acid burn</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#总览："><span class="nav-number">1.0.1.</span> <span class="nav-text">总览：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-serial的破解"><span class="nav-number">1.1.</span> <span class="nav-text">1.serial的破解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-name-serial的破解"><span class="nav-number">1.2.</span> <span class="nav-text">2.name-serial的破解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tfire</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
