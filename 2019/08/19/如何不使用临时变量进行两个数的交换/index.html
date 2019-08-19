@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="二进制,">
+  <meta name="keywords" content="C/C++,">
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="我的二进制之路当我狠下心想学习二进制安全的时候，可能我已经疯了。 ​                                                                                        ——写在前面  ​    先聊聊其他的，关于二进制安全这一方面，我一开始也刷了很多别人的评论与看法，有从入门到放弃的，有行业顶尖大牛的，褒贬不一。但比较">
-<meta name="keywords" content="二进制">
+<meta name="description" content="关于两个整数值的交换 在C/C++的基础学习过程中肯定会遇到一个问题：交换两个整数的值。 很多人看到这个，第一反应：简单！第二反应：建一个临时变量，这题目用膝盖都能想的出来。 直接给出代码： 1234567891011121314151617#include&amp;lt;iostream&amp;gt;using namespace std;void Swap(int&amp;amp; x,int&amp;amp; y)&amp;#1">
+<meta name="keywords" content="C&#x2F;C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="漫漫二进制">
-<meta property="og:url" content="http://yoursite.com/2019/07/30/漫漫二进制/index.html">
+<meta property="og:title" content="如何不使用临时变量进行两个数的交换">
+<meta property="og:url" content="http://yoursite.com/2019/08/19/如何不使用临时变量进行两个数的交换/index.html">
 <meta property="og:site_name" content="Enthusiasm And Focus">
-<meta property="og:description" content="我的二进制之路当我狠下心想学习二进制安全的时候，可能我已经疯了。 ​                                                                                        ——写在前面  ​    先聊聊其他的，关于二进制安全这一方面，我一开始也刷了很多别人的评论与看法，有从入门到放弃的，有行业顶尖大牛的，褒贬不一。但比较">
+<meta property="og:description" content="关于两个整数值的交换 在C/C++的基础学习过程中肯定会遇到一个问题：交换两个整数的值。 很多人看到这个，第一反应：简单！第二反应：建一个临时变量，这题目用膝盖都能想的出来。 直接给出代码： 1234567891011121314151617#include&amp;lt;iostream&amp;gt;using namespace std;void Swap(int&amp;amp; x,int&amp;amp; y)&amp;#1">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/漫漫二进制/1.jpeg">
-<meta property="og:updated_time" content="2019-08-15T16:20:46.092Z">
+<meta property="og:updated_time" content="2019-08-19T05:43:45.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="漫漫二进制">
-<meta name="twitter:description" content="我的二进制之路当我狠下心想学习二进制安全的时候，可能我已经疯了。 ​                                                                                        ——写在前面  ​    先聊聊其他的，关于二进制安全这一方面，我一开始也刷了很多别人的评论与看法，有从入门到放弃的，有行业顶尖大牛的，褒贬不一。但比较">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/30/漫漫二进制/1.jpeg">
+<meta name="twitter:title" content="如何不使用临时变量进行两个数的交换">
+<meta name="twitter:description" content="关于两个整数值的交换 在C/C++的基础学习过程中肯定会遇到一个问题：交换两个整数的值。 很多人看到这个，第一反应：简单！第二反应：建一个临时变量，这题目用膝盖都能想的出来。 直接给出代码： 1234567891011121314151617#include&amp;lt;iostream&amp;gt;using namespace std;void Swap(int&amp;amp; x,int&amp;amp; y)&amp;#1">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/30/漫漫二进制/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/19/如何不使用临时变量进行两个数的交换/">
 
 
 
 
 
-  <title>漫漫二进制 | Enthusiasm And Focus</title>
+  <title>如何不使用临时变量进行两个数的交换 | Enthusiasm And Focus</title>
   
 
 
@@ -280,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/漫漫二进制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/如何不使用临时变量进行两个数的交换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tfire">
@@ -297,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">漫漫二进制</h1>
+          <h1 class="post-title" itemprop="name headline">如何不使用临时变量进行两个数的交换</h1>
         
 
         <div class="post-meta">
@@ -309,8 +307,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-30T00:15:07+08:00">
-                2019-07-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-19T12:46:06+08:00">
+                2019-08-19
               </time>
             
 
@@ -347,81 +345,28 @@
       
 
       
-        <center>
+        <h4 id="关于两个整数值的交换"><a href="#关于两个整数值的交换" class="headerlink" title="关于两个整数值的交换"></a><center>关于两个整数值的交换</center></h4><hr>
+<p>在C/C++的基础学习过程中肯定会遇到一个问题：交换两个整数的值。</p>
+<p>很多人看到这个，第一反应：简单！第二反应：建一个临时变量，这题目用膝盖都能想的出来。</p>
+<p>直接给出代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Swap</span><span class="params">(<span class="keyword">int</span>&amp; x,<span class="keyword">int</span>&amp; y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">    temp=x;</span><br><span class="line">    x=y;</span><br><span class="line">    y=temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i1=<span class="number">13</span>;</span><br><span class="line">    <span class="keyword">int</span> i2=<span class="number">14</span>;</span><br><span class="line">    Swap(i1,i2);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"i1="</span>&lt;&lt;i1&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"i2="</span>&lt;&lt;i2&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="我的二进制之路"><a href="#我的二进制之路" class="headerlink" title="我的二进制之路"></a><center>我的二进制之路</center></h4><p><em>当我狠下心想学习二进制安全的时候，可能我已经疯了。</em></p>
-<p>​                                                                                        <em>——写在前面</em></p>
 <hr>
-<p>​    先聊聊其他的，关于二进制安全这一方面，我一开始也刷了很多别人的评论与看法，有从入门到放弃的，有行业顶尖大牛的，褒贬不一。但比较中肯的统一的看法是：入门难，就业难。</p>
-<p>​    诶，人生不易。好不容易，遇到了自己感兴趣的东西，还是坚持一下吧，学习总会是有收获的。就算以后改行了，至少会因为自己为了小小的梦想而努力过高兴吧。</p>
-<p>首先，二进制安全，初衷是什么？</p>
-<p>答案是宏伟的：<strong>拥有getshell任意一台电脑的能力</strong></p>
-<p>（据小道消息透露，“安全就是个失败的方向，而二进制又是失败中的失败”，有点苦涩哈哈哈哈）</p>
-<p>​    好了好了，言归正传，那么如何系统的学习二进制安全呢?</p>
-<p>​    其实我也不知道…</p>
-<p>​    我看了很多别人的说法，还是有点分歧，但有一点是不会变得，那就是最底层的东西，C啊，C++啊，好吧，这些都能变，那汇编呢，机器语言呢，这总不会变了吧。</p>
-<p>​    那就行开始吧。</p>
-<p>​    路漫漫其修远兮，吾将上下而求索。</p>
-<p>​    先贴一张图，<strong>提问的智慧</strong>，感觉还是蛮有意思的</p>
-<p>   <img src="/2019/07/30/漫漫二进制/1.jpeg" alt></p>
-<hr>
-<p>​    这篇文章不聊技术向的问题，就聊个大概的学习路线。</p>
-<ul>
-<li><p>​    学习二进制，最起码的语言要会吧？</p>
-<pre><code>1. x86汇编
-2. c / c++
-3. python
-4. windows编程（可以隶属c / c++）</code></pre><p>以上是我现在看了个一知半解的，以后肯定还要学习其他的，以后再说</p>
-</li>
-<li><p>​    要会二进制，没有一手拿得出手的敲代码能力怎么行？</p>
-<pre><code>1. windows核心编程
-2. c/c++
-3. python
-4. python的灰帽子与自动化运维
-5. 精通黑客脚本</code></pre></li>
-<li><p>​    学二进制，没有一点系统知识真的好吗？</p>
-<pre><code>1. 深入理解计算机原理
-2. 深入理解linux内核
-3. windows内核安全编程
-4. windows内核的原理与实现
-5. 操作系统（这门课还挂了，难搞哦~）</code></pre></li>
-<li><p>​    没有技巧，学什么二进制，还不如溜了溜了</p>
-<pre><code>1. reversing C ++
-2. c++的反汇编与逆向分析
-3. 软件调试案例
-4. 黑客攻防技术宝典
-5. 0day安全
-6. 漏洞战争-软件漏洞分析技术
-7. 逆向工程核心原理
-8. 加密与解密
-9. IDA Pro权威指南</code></pre></li>
-<li><p>​     学习是死的，总得动手去干吧</p>
-<pre><code>1. 游戏外挂开放艺术
-2. 捉虫日记
-3. 黑客面杀
-4. 恶意代码分析
-5. 安全软件开发之道
-6. The Shellcodes Handbook</code></pre></li>
-</ul>
-<hr>
-<ul>
-<li><h3 id="关于逆向："><a href="#关于逆向：" class="headerlink" title="关于逆向："></a>关于逆向：</h3><h5 id="0x01-打基础"><a href="#0x01-打基础" class="headerlink" title="0x01: 打基础"></a>0x01: 打基础</h5><p>欲学逆向，先懂正向。首先至少会点C和C++吧，要是只会个python或java、VB、C#什么的，连指针都不熟悉就有点难整了，还得会点8086汇编，8086学完还得学x86汇编（有了8086的基础学起来会很快），在这期间可以破解一些简单的小软件找点成就感（网上教程和文章多的是，后面我们团队也会出软件破解系列的教程）。</p>
-<p>资料获取：C和C++就不说了，8086汇编可以看王爽老师的《汇编语言》和小甲鱼的汇编视频教程，x86可以看《<em>Windows</em>环境下<em>32</em>位汇编语言程序设计》。</p>
-<h5 id="0x02-开始学习逆向"><a href="#0x02-开始学习逆向" class="headerlink" title="0x02: 开始学习逆向"></a>0x02: 开始学习逆向</h5><p>打完基础后，可以开始逆向分析一些小程序，最好是手里有源码或者自己写一个，用OD在入口点直接跟踪分析到结束，一边跟源码作对比。学习代码编译成汇编会是什么样的，编译器附加了什么，debug和realease版本又有什么区别，不同语言编译后的汇编代码又有什么特点，F2、内存、硬件断点的原理又是啥……还有学习PE结构，了解文件加载运行机制，这是分析加壳软件和病毒的必备基础：如何在PE中插入代码或EXE文件，ESP定律、二次三次内存断点是如何走到OEP的。</p>
-<p>资料获取：编译原理可以看《C++反汇编与逆向分析》，PE结构可以看小甲鱼的解密系列-系统篇视频教程，还可以看《Windows PE权威指南》、《逆向工程核心原理》，还有看雪大佬的《加密与解密》。</p>
-<h5 id="0x03-入门"><a href="#0x03-入门" class="headerlink" title="0x03: 入门"></a>0x03: 入门</h5><p>此时逆向不能再单靠OD了，得学学神器IDA，IDA能将大部分代码反编译成类C代码，会方便很多，能静态分析的没必要动态跟踪，IDA还有很多强大的功能这里就不一一列举了。然后还得深入学习系统底层运行机制，了解内核工作原理；看别人分析病毒的文章，并自己尝试着分析一下；学习堆栈溢出原理及利用方法等等……</p>
-<p>资料获取：《IDA Pro权威指南》、吾爱破解和看雪等论坛、《Windows内核工作原理》、《0day安全：软件漏洞分析技术》、《软件调试》、《Windows核心编程》等等。</p>
-</li>
-</ul>
-<hr>
-<p>​    冰山一角。</p>
-<p>​    先列下来这么多，以后有什么继续要学的再慢慢补充。</p>
-<p>​    欢迎大家提出意见，一起交流学习。</p>
-<p>​    关于技术向的干货，慢慢补充。</p>
-<p>​    一边学习，一边思考，一边记录，</p>
-<p>​    <strong>永远保持一颗好奇心</strong>，</p>
-<p>   头发我不要了还不行吗。</p>
-</center>
+<h6 id="那如果不使用临时变量呢？"><a href="#那如果不使用临时变量呢？" class="headerlink" title="那如果不使用临时变量呢？"></a>那如果不使用临时变量呢？</h6><p>两种思路：</p>
+<p>   方法一、加减减</p>
+<p>​           a = a + b;<br>​           b = a - b;<br>​           a = a - b;</p>
+<p>   方法二、异或运算（只能用于整数）</p>
+<p>​          a = a ^ b;<br>​          b = a ^ b;<br>​          a = a ^ b;</p>
+<p>方法一简单粗暴不多解释；</p>
+<p>来看一下方法二：</p>
+<p><em>异或运算就是将十进制数转换成二进制后，同位相同则取0，同位相异则取1。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int a = 2 ;  0010</span><br><span class="line"></span><br><span class="line">int b = 9;   1001</span><br><span class="line"></span><br><span class="line">a = a ^ b ;          0010</span><br><span class="line"></span><br><span class="line">                       ^  1001</span><br><span class="line"></span><br><span class="line">                 a    =  1011</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b = a ^ b;     1011</span><br><span class="line"></span><br><span class="line">                  ^ 1001</span><br><span class="line"></span><br><span class="line">              b =  0010 = 2</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">a = a ^ b;    1011</span><br><span class="line"></span><br><span class="line">                 ^  0010</span><br><span class="line"></span><br><span class="line">             a =  1001 = 9</span><br></pre></td></tr></table></figure>
+
+<p>用代码表示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Swap</span><span class="params">(<span class="keyword">int</span>&amp; a,<span class="keyword">int</span>&amp; b)</span></span>&#123;</span><br><span class="line">    a^=b;</span><br><span class="line">    b^=a;</span><br><span class="line">    a^=b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i1=<span class="number">13</span>;</span><br><span class="line">    <span class="keyword">int</span> i2=<span class="number">14</span>;</span><br><span class="line">    Swap(i1,i2);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"i1="</span>&lt;&lt;i1&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"i2="</span>&lt;&lt;i2&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好啦，完工！</p>
+
       
     </div>
     
@@ -438,7 +383,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/二进制/" rel="tag"># 二进制</a>
+            <a href="/tags/C-C/" rel="tag"># C/C++</a>
           
         </div>
       
@@ -451,8 +396,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/28/windows编程之句柄hwnd与hdc的区别/" rel="next" title="windows编程之句柄hwnd与hdc的区别">
-                <i class="fa fa-chevron-left"></i> windows编程之句柄hwnd与hdc的区别
+              <a href="/2019/08/18/逆向之cracker-me-1/" rel="next" title="逆向之Crack Me第一期">
+                <i class="fa fa-chevron-left"></i> 逆向之Crack Me第一期
               </a>
             
           </div>
@@ -460,10 +405,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/30/经典栈溢出问题/" rel="prev" title="经典栈溢出问题">
-                经典栈溢出问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#我的二进制之路"><span class="nav-number">1.</span> <span class="nav-text">我的二进制之路</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#关于逆向："><span class="nav-number"></span> <span class="nav-text">关于逆向：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#0x01-打基础"><span class="nav-number">0.1.</span> <span class="nav-text">0x01: 打基础</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#0x02-开始学习逆向"><span class="nav-number">0.2.</span> <span class="nav-text">0x02: 开始学习逆向</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#0x03-入门"><span class="nav-number">0.3.</span> <span class="nav-text">0x03: 入门</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于两个整数值的交换"><span class="nav-number">1.</span> <span class="nav-text">关于两个整数值的交换</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#那如果不使用临时变量呢？"><span class="nav-number">1.0.1.</span> <span class="nav-text">那如果不使用临时变量呢？</span></a></li></ol></li></ol></div>
             
 
           </div>
