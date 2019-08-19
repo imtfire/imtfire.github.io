@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="逆向工程,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Enthusiasm And Focus" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="破解Crack Me-AfKayAs不多哔哔，直接上菜   爆破法： 1234567891011121314151617181920212223242526272829303132333435360040258B     /74 58           je      short 004025E50040258D   . |68 801B4000     push    00401B80">
+<meta name="keywords" content="逆向工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向之Crack Me第二期">
+<meta property="og:url" content="http://yoursite.com/2019/08/19/逆向之Crack-Me第二期/index.html">
+<meta property="og:site_name" content="Enthusiasm And Focus">
+<meta property="og:description" content="破解Crack Me-AfKayAs不多哔哔，直接上菜   爆破法： 1234567891011121314151617181920212223242526272829303132333435360040258B     /74 58           je      short 004025E50040258D   . |68 801B4000     push    00401B80">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-19T13:02:49.102Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逆向之Crack Me第二期">
+<meta name="twitter:description" content="破解Crack Me-AfKayAs不多哔哔，直接上菜   爆破法： 1234567891011121314151617181920212223242526272829303132333435360040258B     /74 58           je      short 004025E50040258D   . |68 801B4000     push    00401B80">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/19/逆向之Crack-Me第二期/">
+
+
+
+
+
+  <title>逆向之Crack Me第二期 | Enthusiasm And Focus</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Enthusiasm And Focus</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Always Maintain a Santa Claus</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            Commonweal 404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/逆向之Crack-Me第二期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tfire">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Enthusiasm And Focus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">逆向之Crack Me第二期</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-19T20:53:52+08:00">
+                2019-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="破解Crack-Me-AfKayAs"><a href="#破解Crack-Me-AfKayAs" class="headerlink" title=" 破解Crack Me-AfKayAs"></a><center> 破解Crack Me-AfKayAs</center></h4><p>不多哔哔，直接上菜</p>
+<hr>
+<ol>
+<li><p>爆破法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">0040258B     /74 58           je      short 004025E5</span><br><span class="line">0040258D   . |68 801B4000     push    00401B80                                  ;  You Get It</span><br><span class="line">00402592   . |68 9C1B4000     push    00401B9C                                  ;  \r\n</span><br><span class="line">00402597   . |FFD7            call    edi</span><br><span class="line">00402599   . |8BD0            mov     edx, eax</span><br><span class="line">0040259B   . |8D4D E8         lea     ecx, dword ptr [ebp-18]</span><br><span class="line">0040259E   . |FFD3            call    ebx</span><br><span class="line">004025A0   . |50              push    eax</span><br><span class="line">004025A1   . |68 A81B4000     push    00401BA8                                  ;  KeyGen It Now</span><br><span class="line">004025A6   . |FFD7            call    edi</span><br><span class="line">004025A8   . |8D4D 94         lea     ecx, dword ptr [ebp-6C]</span><br><span class="line">004025AB   . |8945 CC         mov     dword ptr [ebp-34], eax</span><br><span class="line">004025AE   . |8D55 A4         lea     edx, dword ptr [ebp-5C]</span><br><span class="line">004025B1   . |51              push    ecx</span><br><span class="line">004025B2   . |8D45 B4         lea     eax, dword ptr [ebp-4C]</span><br><span class="line">004025B5   . |52              push    edx</span><br><span class="line">004025B6   . |50              push    eax</span><br><span class="line">004025B7   . |8D4D C4         lea     ecx, dword ptr [ebp-3C]</span><br><span class="line">004025BA   . |6A 00           push    0</span><br><span class="line">004025BC   . |51              push    ecx</span><br><span class="line">004025BD   . |C745 C4 0800000&gt;mov     dword ptr [ebp-3C], 8</span><br><span class="line">004025C4   . |FF15 10414000   call    dword ptr [&lt;&amp;MSVBVM50.#595&gt;]              ;  MSVBVM50.rtcMsgBox</span><br><span class="line">004025CA   . |8D4D E8         lea     ecx, dword ptr [ebp-18]</span><br><span class="line">004025CD   . |FF15 80414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaFreeStr&gt;]      ;  MSVBVM50.__vbaFreeStr</span><br><span class="line">004025D3   . |8D55 94         lea     edx, dword ptr [ebp-6C]</span><br><span class="line">004025D6   . |8D45 A4         lea     eax, dword ptr [ebp-5C]</span><br><span class="line">004025D9   . |52              push    edx</span><br><span class="line">004025DA   . |8D4D B4         lea     ecx, dword ptr [ebp-4C]</span><br><span class="line">004025DD   . |50              push    eax</span><br><span class="line">004025DE   . |8D55 C4         lea     edx, dword ptr [ebp-3C]</span><br><span class="line">004025E1   . |51              push    ecx</span><br><span class="line">004025E2   . |52              push    edx</span><br><span class="line">004025E3   . |EB 56           jmp     short 0040263B</span><br><span class="line">004025E5   &gt; \68 C81B4000     push    00401BC8                                  ;  You Get Wrong</span><br><span class="line">004025EA   .  68 9C1B4000     push    00401B9C                                  ;  \r\n</span><br><span class="line">004025EF   .  FFD7            call    edi</span><br></pre></td></tr></table></figure>
+
+<p>在0040258B处用nop填充，破解完毕！</p>
+</li>
+<li><p>找算法：（就为了这玩意儿）</p>
+<p>翻到最近的一个ret后面，在push ebp处下断点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">00402412   .  50              push    eax                                       ; /name</span><br><span class="line">00402413   .  8B1A            mov     ebx, dword ptr [edx]                      ; |</span><br><span class="line">00402415   .  FF15 E4404000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaLenBstr&gt;]      ; \__vbaLenBstr</span><br><span class="line">0040241B   .  8BF8            mov     edi, eax                                  ;  name的字符串长度，edi=2</span><br><span class="line">0040241D   .  8B4D E8         mov     ecx, dword ptr [ebp-18]                   ;  ecx=12</span><br><span class="line">00402420   .  69FF FB7C0100   imul    edi, edi, 17CFB                           ;  edi=edi*0x17CFB=2*0x17CFB=0x2 F9F6</span><br><span class="line">00402426   .  51              push    ecx                                       ; /把2压栈</span><br><span class="line">00402427   .  0F80 91020000   jo      004026BE                                  ; |溢出跳转</span><br><span class="line">0040242D   .  FF15 F8404000   call    dword ptr [&lt;&amp;MSVBVM50.#516&gt;]              ; \rtcAnsiValueBstr</span><br><span class="line">00402433   .  0FBFD0          movsx   edx, ax                                   ;  edx=ax=0x31</span><br><span class="line">00402436   .  03FA            add     edi, edx                                  ;  edi=edi+edx=0x2 F9F6+0x31=0x2 FA27</span><br><span class="line">00402438   .  0F80 80020000   jo      004026BE</span><br><span class="line">0040243E   .  57              push    edi</span><br><span class="line">0040243F   .  FF15 E0404000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaStrI4&gt;]        ;  MSVBVM50.__vbaStrI4</span><br><span class="line">00402445   .  8BD0            mov     edx, eax                                  ;  edx=eax=195111；十进制表示</span><br><span class="line">00402447   .  8D4D E0         lea     ecx, dword ptr [ebp-20]</span><br><span class="line">0040244A   .  FF15 70414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaStrMove&gt;]      ;  MSVBVM50.__vbaStrMove</span><br><span class="line">00402450   .  8BBD 50FFFFFF   mov     edi, dword ptr [ebp-B0]                   ;  edi=021DA33C</span><br><span class="line">00402456   .  50              push    eax</span><br><span class="line">00402457   .  57              push    edi</span><br><span class="line">00402458   .  FF93 A4000000   call    dword ptr [ebx+A4]</span><br><span class="line">0040245E   .  85C0            test    eax, eax                                  ;  =0</span><br><span class="line">00402460   .  7D 12           jge     short 00402474</span><br><span class="line">00402462   .  68 A4000000     push    0A4</span><br><span class="line">00402467   .  68 5C1B4000     push    00401B5C</span><br><span class="line">0040246C   .  57              push    edi</span><br><span class="line">0040246D   .  50              push    eax</span><br><span class="line">0040246E   .  FF15 04414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaHresultCheckOb&gt;;  MSVBVM50.__vbaHresultCheckObj</span><br><span class="line">00402474   &gt;  8D45 E0         lea     eax, dword ptr [ebp-20]</span><br><span class="line">00402477   .  8D4D E4         lea     ecx, dword ptr [ebp-1C]</span><br><span class="line">0040247A   .  50              push    eax</span><br><span class="line">0040247B   .  8D55 E8         lea     edx, dword ptr [ebp-18]</span><br><span class="line">0040247E   .  51              push    ecx</span><br><span class="line">0040247F   .  52              push    edx</span><br><span class="line">00402480   .  6A 03           push    3</span><br><span class="line">00402482   .  FF15 5C414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaFreeStrList&gt;]  ;  MSVBVM50.__vbaFreeStrList</span><br><span class="line">00402488   .  83C4 10         add     esp, 10</span><br><span class="line">0040248B   .  8D45 D4         lea     eax, dword ptr [ebp-2C]</span><br><span class="line">0040248E   .  8D4D D8         lea     ecx, dword ptr [ebp-28]</span><br><span class="line">00402491   .  8D55 DC         lea     edx, dword ptr [ebp-24]</span><br><span class="line">00402494   .  50              push    eax</span><br><span class="line">00402495   .  51              push    ecx</span><br><span class="line">00402496   .  52              push    edx</span><br><span class="line">00402497   .  6A 03           push    3</span><br><span class="line">00402499   .  FF15 F4404000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaFreeObjList&gt;]  ;  MSVBVM50.__vbaFreeObjList</span><br><span class="line">0040249F   .  8B06            mov     eax, dword ptr [esi]</span><br><span class="line">004024A1   .  83C4 10         add     esp, 10</span><br><span class="line">004024A4   .  56              push    esi</span><br><span class="line">004024A5   .  FF90 04030000   call    dword ptr [eax+304]</span><br><span class="line">004024AB   .  8B1D 0C414000   mov     ebx, dword ptr [&lt;&amp;MSVBVM50.__vbaObjSet&gt;]  ;  MSVBVM50.__vbaObjSet</span><br><span class="line">004024B1   .  50              push    eax</span><br><span class="line">004024B2   .  8D45 DC         lea     eax, dword ptr [ebp-24]</span><br><span class="line">004024B5   .  50              push    eax</span><br><span class="line">004024B6   .  FFD3            call    ebx                                       ;  &lt;&amp;MSVBVM50.__vbaObjSet&gt;</span><br><span class="line">004024B8   .  8BF8            mov     edi, eax</span><br><span class="line">004024BA   .  8D55 E8         lea     edx, dword ptr [ebp-18]</span><br><span class="line">004024BD   .  52              push    edx</span><br><span class="line">004024BE   .  57              push    edi</span><br><span class="line">004024BF   .  8B0F            mov     ecx, dword ptr [edi]</span><br><span class="line">004024C1   .  FF91 A0000000   call    dword ptr [ecx+A0]</span><br><span class="line">004024C7   .  85C0            test    eax, eax</span><br><span class="line">004024C9   .  7D 12           jge     short 004024DD</span><br><span class="line">004024CB   .  68 A0000000     push    0A0</span><br><span class="line">004024D0   .  68 5C1B4000     push    00401B5C</span><br><span class="line">004024D5   .  57              push    edi</span><br><span class="line">004024D6   .  50              push    eax</span><br><span class="line">004024D7   .  FF15 04414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaHresultCheckOb&gt;;  MSVBVM50.__vbaHresultCheckObj</span><br><span class="line">004024DD   &gt;  56              push    esi</span><br><span class="line">004024DE   .  FF95 40FFFFFF   call    dword ptr [ebp-C0]</span><br><span class="line">004024E4   .  50              push    eax</span><br><span class="line">004024E5   .  8D45 D8         lea     eax, dword ptr [ebp-28]</span><br><span class="line">004024E8   .  50              push    eax</span><br><span class="line">004024E9   .  FFD3            call    ebx</span><br><span class="line">004024EB   .  8BF0            mov     esi, eax</span><br><span class="line">004024ED   .  8D55 E4         lea     edx, dword ptr [ebp-1C]</span><br><span class="line">004024F0   .  52              push    edx</span><br><span class="line">004024F1   .  56              push    esi</span><br><span class="line">004024F2   .  8B0E            mov     ecx, dword ptr [esi]</span><br><span class="line">004024F4   .  FF91 A0000000   call    dword ptr [ecx+A0]</span><br><span class="line">004024FA   .  85C0            test    eax, eax</span><br><span class="line">004024FC   .  7D 12           jge     short 00402510</span><br><span class="line">004024FE   .  68 A0000000     push    0A0</span><br><span class="line">00402503   .  68 5C1B4000     push    00401B5C</span><br><span class="line">00402508   .  56              push    esi</span><br><span class="line">00402509   .  50              push    eax</span><br><span class="line">0040250A   .  FF15 04414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaHresultCheckOb&gt;;  MSVBVM50.__vbaHresultCheckObj</span><br><span class="line">00402510   &gt;  8B45 E8         mov     eax, dword ptr [ebp-18]                   ;  密码=123</span><br><span class="line">00402513   .  8B4D E4         mov     ecx, dword ptr [ebp-1C]                   ;  上次计算出的十进制数</span><br><span class="line">00402516   .  8B3D 00414000   mov     edi, dword ptr [&lt;&amp;MSVBVM50.__vbaStrCat&gt;]  ;  MSVBVM50.__vbaStrCat</span><br><span class="line">0040251C   .  50              push    eax</span><br><span class="line">0040251D   .  68 701B4000     push    00401B70                                  ;  AKA-</span><br><span class="line">00402522   .  51              push    ecx                                       ; /String</span><br><span class="line">00402523   .  FFD7            call    edi                                       ; \__vbaStrCat</span><br><span class="line">00402525   .  8B1D 70414000   mov     ebx, dword ptr [&lt;&amp;MSVBVM50.__vbaStrMove&gt;] ;  MSVBVM50.__vbaStrMove</span><br><span class="line">0040252B   .  8BD0            mov     edx, eax                                  ;  edx=eax=AKA-195111</span><br><span class="line">0040252D   .  8D4D E0         lea     ecx, dword ptr [ebp-20]</span><br><span class="line">00402530   .  FFD3            call    ebx                                       ;  &lt;&amp;MSVBVM50.__vbaStrMove&gt;</span><br><span class="line">00402532   .  50              push    eax</span><br><span class="line">00402533   .  FF15 28414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaStrCmp&gt;]       ;  MSVBVM50.__vbaStrCmp</span><br><span class="line">00402539   .  8BF0            mov     esi, eax</span><br><span class="line">0040253B   .  8D55 E0         lea     edx, dword ptr [ebp-20]</span><br><span class="line">0040253E   .  F7DE            neg     esi</span><br><span class="line">00402540   .  8D45 E8         lea     eax, dword ptr [ebp-18]</span><br><span class="line">00402543   .  52              push    edx</span><br><span class="line">00402544   .  1BF6            sbb     esi, esi</span><br><span class="line">00402546   .  8D4D E4         lea     ecx, dword ptr [ebp-1C]</span><br><span class="line">00402549   .  50              push    eax</span><br><span class="line">0040254A   .  46              inc     esi</span><br><span class="line">0040254B   .  51              push    ecx</span><br><span class="line">0040254C   .  6A 03           push    3</span><br><span class="line">0040254E   .  F7DE            neg     esi</span><br><span class="line">00402550   .  FF15 5C414000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaFreeStrList&gt;]  ;  MSVBVM50.__vbaFreeStrList</span><br><span class="line">00402556   .  83C4 10         add     esp, 10</span><br><span class="line">00402559   .  8D55 D8         lea     edx, dword ptr [ebp-28]</span><br><span class="line">0040255C   .  8D45 DC         lea     eax, dword ptr [ebp-24]</span><br><span class="line">0040255F   .  52              push    edx</span><br><span class="line">00402560   .  50              push    eax</span><br><span class="line">00402561   .  6A 02           push    2</span><br><span class="line">00402563   .  FF15 F4404000   call    dword ptr [&lt;&amp;MSVBVM50.__vbaFreeObjList&gt;]  ;  MSVBVM50.__vbaFreeObjList</span><br><span class="line">00402569   .  83C4 0C         add     esp, 0C</span><br><span class="line">0040256C   .  B9 04000280     mov     ecx, 80020004</span><br><span class="line">00402571   .  B8 0A000000     mov     eax, 0A</span><br><span class="line">00402576   .  894D 9C         mov     dword ptr [ebp-64], ecx</span><br><span class="line">00402579   .  66:85F6         test    si, si</span><br><span class="line">0040257C   .  8945 94         mov     dword ptr [ebp-6C], eax</span><br><span class="line">0040257F   .  894D AC         mov     dword ptr [ebp-54], ecx</span><br><span class="line">00402582   .  8945 A4         mov     dword ptr [ebp-5C], eax</span><br><span class="line">00402585   .  894D BC         mov     dword ptr [ebp-44], ecx</span><br><span class="line">00402588   .  8945 B4         mov     dword ptr [ebp-4C], eax</span><br><span class="line">0040258B      74 58           je      short 004025E5</span><br></pre></td></tr></table></figure>
+
+<p>算法很简单，C语言表示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdafx.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">char</span> buff[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> _tmain(<span class="keyword">int</span> argc, _TCHAR* argv[])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"160CrackMe-002 Name/Serial\r\n\r\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Name:"</span>);</span><br><span class="line">    gets_s(buff,<span class="number">100</span>);</span><br><span class="line">    <span class="keyword">int</span> nLen = <span class="built_in">strlen</span>(buff);</span><br><span class="line">    <span class="keyword">if</span> ( nLen &gt; <span class="number">0</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> nRet = nLen * <span class="number">0x17CFB</span>;</span><br><span class="line">        nRet += buff[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"AKA-%d\r\n"</span>,nRet);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Input error!\r\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完工！！</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/逆向工程/" rel="tag"># 逆向工程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/19/如何不使用临时变量进行两个数的交换/" rel="next" title="如何不使用临时变量进行两个数的交换">
+                <i class="fa fa-chevron-left"></i> 如何不使用临时变量进行两个数的交换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/1.jpeg" alt="tfire">
+            
+              <p class="site-author-name" itemprop="name">tfire</p>
+              <p class="site-description motion-element" itemprop="description">waiting wind , chasing dream...</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#破解Crack-Me-AfKayAs"><span class="nav-number">1.</span> <span class="nav-text"> 破解Crack Me-AfKayAs</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tfire</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
